@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hello world!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'> -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans&display=swap" rel="stylesheet"> -->
+
+
+    <style>
+        /* @font-face {
+            font-family: 'Poppins';
+            src: url('data:font/truetype;charset=utf-8;base64,{{fontPopins}}');
+            font-weight: normal;
+            font-style: normal;
+
+        } */
+        html {
+            background-color: #DBEAFE;
+            background: #DBEAFE;
+            font-family: 'Work Sans';
+            /* font-family: 'Poppins', sans-serif; */
+        }
+
+        body {
+            background-color: #DBEAFE;
+            background: #DBEAFE;
+            margin: 0px;
+            background-color: #DBEAFE;
+            background: #DBEAFE;
+            font-family: 'Work Sans';
+            /* font-family: 'Poppins', sans-serif; */
+        }
+
+        .pdf-container {
+            margin: 20px;
+            /* margin-right: 20px; */
+            page-break-inside: avoid;
+
+        }
+
+        .pdf-title-header {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 120%;
+            text-align: center;
+            color: #2563EB;
+            /* font-family: 'Poppins', sans-serif; */
+
+
+        }
+
+        .pdf-sub-header {
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 16px;
+            text-align: center;
+            color: #475569;
+
+        }
+
+        .pdf-section-header {
+            background-color: #EFF6FF;
+            background: #EFF6FF;
+            text-align: center;
+            font-size: 10px;
+            line-height: 15px;
+            color: #2563EB;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            width: 100%;
+            page-break-inside: avoid;
+
+        }
+
+
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            /* align-items: center; */
+            display: -webkit-box;
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            page-break-inside: avoid;
+            margin-top: 2px;
+
+        }
+
+        .row-header {
+            background-color: #D1DBE9;
+            background: #D1DBE9;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            border: 1px solid #EFF6FF;
+            page-break-inside: avoid;
+
+            /* height: 25px; */
+        }
+
+        .row-header-text {
+            font-size: 8px;
+            line-height: 12px;
+            font-weight: 500;
+            color: #475571;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            page-break-inside: avoid;
+
+        }
+
+        .row-value-flex-column {
+            background-color: #FFFFFF;
+            background: #FFFFFF;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            border: 1px solid #EFF6FF;
+            flex-direction: column;
+            flex-wrap: wrap;
+            display: -webkit-box;
+            display: -webkit-flex;
+            -webkit-flex-direction: column;
+            -webkit-flex-wrap: wrap;
+
+        }
+
+        .row-value-flex-row {
+            background-color: #FFFFFF;
+            background: #FFFFFF;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            border: 1px solid #EFF6FF;
+            flex-direction: row;
+            align-items: center;
+            display: -webkit-box;
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+        }
+
+        .row-value-text {
+            font-size: 8px;
+            line-height: 12px;
+            font-weight: 500;
+            color: #475571;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            border-top: 1px solid #EFF6FF;
+            /* display: flex; */
+        }
+
+        .row-value-text-flex-row {
+            font-size: 8px;
+            line-height: 12px;
+            font-weight: 500;
+            color: #475571;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            border-top: 1px solid #EFF6FF;
+            display: flex;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            /* align-items: center; */
+            display: -webkit-box;
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+
+        }
+
+        .check-box-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-label-checked {
+            font-size: 7px;
+            color: #2563EB;
+            line-height: 10.5px;
+        }
+
+        .checkbox-label {
+            font-size: 7px;
+            color: #AAAAAA;
+            line-height: 10.5px;
+        }
+
+        .footer-text {
+            /* font-family: Poppins; */
+            font-size: 8px;
+            font-weight: 500;
+            line-height: 16px;
+            text-align: center;
+        }
+
+        .informative-section-header {
+            /* font-family: Poppins; */
+            font-size: 8px;
+            font-weight: 600;
+            line-height: 12px;
+            text-align: left;
+            color: #475571;
+            padding-left: 2px;
+        }
+
+        .informative-section-label {
+            /* font-family: Poppins; */
+            font-size: 8px;
+            font-weight: 400;
+            line-height: 12px;
+            color: #2563EB;
+            padding-left: 2px;
+        }
+
+        .informative-section-value {
+            /* font-family: Poppins; */
+            font-size: 8px;
+            font-weight: 400;
+            line-height: 12px;
+            color: #475571;
+            padding-left: 2px;
+        }
+
+        .informative-section-container {
+            background-color: #EFF6FF;
+            background: #EFF6FF;
+            page-break-inside: avoid;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            box-sizing: border-box;
+            border: 1px solid #DBEAFE;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pdf-container">
+        <p class="pdf-title-header">Indiana Energy Assistance Program Application </p>
+        <p class="pdf-sub-header">Program Year 2024</p>
+        <div class="flex-container">
+            <div class="row-value-flex-row" style="width:50%">
+                <img style="display: block;margin-left: auto;margin-right: auto;" src="data:image/png;base64,{{logo}}"
+                    alt="Logo">
+            </div>
+            <div class="row-value-flex-column" style="width:50%">
+                <div class="pdf-section-header">
+                    For Provider/Agency Use Only
+                </div>
+                <div class="flex-container">
+                    <div class="row-value-flex-row" style="width:100%">
+                        <div class="row-value-text" style="width: 50%;">
+                            Date received:
+                        </div>
+                        <div class="row-value-text">
+                            07/19/2024
+                        </div>
+                    </div>
+                    <div class="row-value-flex-row" style="width:100%">
+                        <div class="row-value-text" style="width: 50%;">
+                            Application number:
+                        </div>
+                        <div class="row-value-text">
+                            3421MPGX
+                        </div>
+                    </div>
+                    <div class="row-value-flex-row" style="width:100%">
+                        <label class="check-box-container">
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked"> Mail-In</span>
+                        </label>
+                        <label class="check-box-container">
+                            <input type="checkbox">
+                            <span class="checkbox-label"> Appointment </span>
+                        </label>
+                        <label class="check-box-container">
+                            <input type="checkbox">
+                            <span class="checkbox-label"> Outreach/Home Visit/Other</span>
+                        </label>
+                    </div>
+                    <div class="row-value-flex-row" style="width:100%">
+                        <div class="row-value-text" style="width: 80%;">
+                            Household is disconnected or out of fuel:
+                        </div>
+                        <label class="check-box-container">
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked"> Yes</span>
+                        </label>
+                        <label class="check-box-container">
+                            <input type="checkbox">
+                            <span class="checkbox-label"> No </span>
+                        </label>
+                    </div>
+                    <div class="row-value-flex-row" style="width:100%">
+                        <div class="row-value-text" style="width: 80%;">
+                            Household has d/c notice or less than 25% fuel:
+                        </div>
+                        <label class="check-box-container">
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked"> Yes</span>
+                        </label>
+                        <label class="check-box-container">
+                            <input type="checkbox">
+                            <span class="checkbox-label"> No </span>
+                        </label>
+                    </div>
+                    <div class="row-value-flex-row" style="width:100%">
+                        <div class="row-value-text" style="width: 80%;">
+                            Household heat source is inoperable:
+                        </div>
+                        <label class="check-box-container">
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked"> Yes</span>
+                        </label>
+                        <label class="check-box-container">
+                            <input type="checkbox">
+                            <span class="checkbox-label"> No </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" flex-container">
+            <div class="row-value-flex-column" style="width:100%">
+
+                <div class="row-value-text">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label">Check here if your electric or heating utility is
+                            disconnected or
+                            scheduled for disconnection, or you are low or out of bulk heating fuel or
+                            prepaid
+                            electricity.</span>
+                    </label>
+                    <p>
+                        If your utility has been disconnected or is scheduled for disconnection, or if
+                        you are low or
+                        out of a prepaid, bulk deliverable fuel, contact your local service provider
+                        listed above to
+                        request a crisis appointment. If you need other emergency options, please call
+                        2-1-1.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="pdf-section-header">
+            Part I: Contact Information
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 50%;">
+                <div class="row-header-text">
+                    Applicant First Name
+                </div>
+            </div>
+            <div class="row-header" style="width: 25%;">
+                <div class="row-header-text">
+                    Last four digits of SSN
+                </div>
+            </div>
+            <div class="row-header" style="width: 25%;">
+                <div class="row-header-text">
+                    Country
+                </div>
+
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width: 50%;">
+                <div class="row-value-text-flex-row">
+                    Karen Fox
+                </div>
+
+            </div>
+            <div class="row-value-flex-column" style="width: 25%;">
+                <div class="row-value-text-flex-row">
+                    xxx-xx- 1234
+                </div>
+            </div>
+            <div class="row-value-flex-column" style="width: 25%;">
+                <div class="row-value-text-flex-row">
+                    Marion County
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 50%;">
+                <div class="row-header-text">
+                    Physical Address (Including Apartment/Lot/Trailer Number)
+                </div>
+            </div>
+            <div class="row-header" style="width: 16.66%;">
+                <div class="row-header-text">
+                    State
+                </div>
+            </div>
+            <div class="row-header" style="width: 16.66%;">
+                <div class="row-header-text">
+                    City
+                </div>
+
+            </div>
+            <div class="row-header" style="width: 16.66%;">
+                <div class="row-header-text">
+                    Zip
+                </div>
+
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width: 50%;">
+                <div class="row-value-text-flex-row">
+                    (574) 204-2262
+                    ,318 Gernhart Ave
+                    Mishawaka, Indiana(IN)
+                </div>
+
+            </div>
+            <div class="row-value-flex-column" style="width: 16.66%;">
+                <div class="row-value-text-flex-row">
+                    IN
+                </div>
+            </div>
+            <div class="row-value-flex-column" style="width: 16.66%;">
+                <div class="row-value-text-flex-row">
+                    Marion County
+                </div>
+            </div>
+            <div class="row-value-flex-column" style="width: 16.66%;">
+                <div class="row-value-text-flex-row">
+                    46544
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 100%;">
+                <div class="row-header-text">
+                    If you have a PO box or an alternate mailing address, please list it below.
+                    Otherwise, please leave
+                    blank.
+                </div>
+            </div>
+
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width: 100%;">
+                <div class="row-value-text-flex-row">
+                    (574) 204-2262
+                    ,318 Gernhart Ave
+                    Mishawaka, Indiana(IN)
+                </div>
+
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 100%;">
+                <div class="row-header-text">
+                    Please provide at least one form of contact information. Failure to provide accurate
+                    contact
+                    information may delay application processing.
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 30%;">
+                <div class="row-header-text">
+                    Telphone number
+                </div>
+            </div>
+            <div class="row-header" style="width: 30%;">
+                <div class="row-header-text">
+                    Mobile phone
+                </div>
+            </div>
+            <div class="row-header" style="width: 40%;">
+                <div class="row-header-text">
+                    E-mail Address
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width: 30%;">
+                <div class="row-value-text-flex-row">
+                    1234567890
+                </div>
+
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked"> Landline</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Mobile</span>
+                    </label>
+
+                </div>
+
+            </div>
+            <div class="row-value-flex-column" style="width: 30%;">
+                <div class="row-value-text-flex-row">
+                    1234567890
+                </div>
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked"> Consent to receive texts</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row-value-flex-column" style="width: 40%;">
+                <div class="row-value-text-flex-row">
+                    foxkaren12345@gmail.com
+                </div>
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked"> Check box to give consent for us to e-mail
+                            you.</span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <div class="pdf-section-header">
+            Part II: Home and Utility Information
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 50%;">
+                <div class="row-header-text">
+                    Home Type (Please check one)
+                </div>
+            </div>
+            <div class="row-header" style="width: 50%;">
+                <div class="row-header-text">
+                    Utilities and Payment
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width: 50%;">
+
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked"> Site-built single house</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Multi-unit (apartment, condo, duplex, etc.)</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Mobile home</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Other</span>
+                    </label>
+
+                </div>
+
+            </div>
+            <div class="row-value-flex-row" style="width: 50%;">
+                <div class="row-value-flex-column" style="width: 50%;">
+                    <div class="row-value-text-flex-row">
+                        Electricity Vendor:
+                    </div>
+
+                    <div class="row-value-text-flex-row">
+                        <label class="check-box-container">
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked"> Included in rent</span>
+                        </label>
+                    </div>
+
+
+                </div>
+                <div class="row-value-flex-column" style="width: 50%;">
+                    <div class="row-value-text-flex-row">
+                        Heating Vendor::
+                    </div>
+
+                    <div class="row-value-text-flex-row">
+                        <label class="check-box-container">
+                            <input type="checkbox">
+                            <span class="checkbox-label"> Included in rent</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+
+            <div class="row-header" style="width: 100%">
+                <div class="row-header-text">
+                    Home Ownership (Please check one)
+
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:100%">
+
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Own</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Rent</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Other</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 50%">
+                <div class="row-header-text">
+                    Primary Heating Source (please check one)
+                </div>
+            </div>
+            <div class="row-header" style="width: 50%">
+                <div class="row-header-text">
+                    Primary Heating Fuel (please check one)
+                </div>
+            </div>
+
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:50%">
+
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Wood Stove</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Other</span>
+                    </label>
+
+                </div>
+
+            </div>
+            <div class="row-value-flex-column" style="width: 50%">
+
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Wood Stove</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Other</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="flex-container">
+
+            <div class="row-header" style="width: 100%">
+                <div class="row-header-text">
+                    Do you have a secondary heating source installed?
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:100%">
+
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Yes</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">No</span>
+                    </label>
+                </div>
+                <div class="row-value-text-flex-row">
+                    <div> <span>If yes, please describe: </span></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="flex-container">
+
+            <div class="row-header" style="width: 100%">
+                <div class="row-header-text">
+                    Do you have a secondary heating source installed?
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:100%">
+
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Yes</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">No</span>
+                    </label>
+                </div>
+                <div class="row-value-text-flex-row">
+                    <div> <span>If yes, please describe: </span></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="pdf-section-header">
+            Part III: Income and Benefits
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 100%">
+                <div class="row-header-text">
+                    Please indicate all types of income received by any member of the household in the
+                    past three
+                    months. Check all that apply.
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:100%;height: 80px;">
+
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+
+            </div>
+        </div>
+        <div class="flex-container">
+
+            <div class="row-header" style="width: 100%">
+                <div class="row-header-text">
+                    Please indicate all sources of assistance received by any member of the household.
+                    Check all that
+                    apply.
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:100%;height: 80px;">
+                <!-- <div class="row-value-text-flex-row"> -->
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Baseboard/Wall Unit</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Wood Stove</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Other</span>
+                </label>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="flex-container">
+
+            <div class="row-header" style="width: 50%">
+                <div class="row-header-text">
+                    Has anybody in the household paid child support in the past three months?
+                </div>
+            </div>
+            <div class="row-header" style="width: 50%">
+                <div class="row-header-text">
+                    Is anybody in the household between the ages of 14-24 and neither working nor
+                    attending school?
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:50%">
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Yes (please submit proof of
+                            payments)</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">No</span>
+                    </label>
+
+                </div>
+            </div>
+            <div class="row-value-flex-column" style="width:50%">
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Yes (please submit proof of
+                            payments)</span>
+                    </label>
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">No</span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+        <p class="footer-text">
+            Please complete and sign page 2 - Application is not valid without signature and date.
+
+            Use blue or black ink only and be sure to fully complete all fields. Failure to fully complete
+            application may delay processing.
+        </p>
+        <div class="pdf-section-header">
+            Part IV: Household Members and Demographics
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 100%">
+                <div class="row-header-text">
+                    List all people residing in household, including yourself. Check here and attach additional sheet if
+                    more than four people are in household
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 5%">
+            </div>
+            <div class="row-header" style="width: 20%">
+                <div class="row-header-text">
+                    Last Name and Suffix
+                </div>
+            </div>
+            <div class="row-header" style="width: 20%">
+                <div class="row-header-text">
+                    First Name
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    M.I.
+                </div>
+            </div>
+            <div class="row-header" style="width: 7%">
+                <div class="row-header-text">
+                    Date of
+                    Birth
+                </div>
+            </div>
+            <div class="row-header" style="width: 8%">
+                <div class="row-header-text">
+                    Gender
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    Disable?
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    Race
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    Ethnicity
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    Employment
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    Education
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    Health
+                    Insurance
+                </div>
+            </div>
+            <div class="row-header" style="width: 5%">
+                <div class="row-header-text">
+                    Military
+                    Status
+                </div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    Applicant
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 20%">
+                <div class="row-value-text">
+                    Williamson
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 20%">
+                <div class="row-value-text">
+                    Cameron
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    M.I.
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 7%">
+                <div class="row-value-text">
+                    01/24/1960
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 8%">
+                <div class="row-value-text">
+                    Male
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    Yes
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    O
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    N
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    PT
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    C
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    D
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    V
+                </div>
+            </div>
+
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    2
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 20%">
+                <div class="row-value-text">
+                    Williamson
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 20%">
+                <div class="row-value-text">
+                    Cameron
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    M.I.
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 7%">
+                <div class="row-value-text">
+                    01/24/1960
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 8%">
+                <div class="row-value-text">
+                    Male
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    Yes
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    O
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    N
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    PT
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    C
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    D
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    V
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex-container">
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    3
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 20%">
+                <div class="row-value-text">
+                    Williamson
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 20%">
+                <div class="row-value-text">
+                    Cameron
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    M.I.
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 7%">
+                <div class="row-value-text">
+                    01/24/1960
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 8%">
+                <div class="row-value-text">
+                    Male
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    Yes
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    O
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    N
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    PT
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    C
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    D
+                </div>
+            </div>
+            <div class="row-value-flex-row" style="width: 5%">
+                <div class="row-value-text">
+                    V
+                </div>
+            </div>
+
+        </div>
+        <div class="flex-container">
+            <div class="informative-section-container" style="width: 30%;">
+                <p class="informative-section-header">
+                    Race Codes
+                </p>
+                <span class="informative-section-label">
+                    A <span class="informative-section-value">
+                        -Asian
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    B <span class="informative-section-value">
+                        - Black or African American
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    I <span class="informative-section-value">
+                        -American Indian or Alaska Native
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    P <span class="informative-section-value">
+                        -Native Hawaiian or other Pacific Island
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    W <span class="informative-section-value">
+                        -White
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    M <span class="informative-section-value">
+                        -Multi-race
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    O <span class="informative-section-value">
+                        -Other
+                    </span>
+                </span>
+            </div>
+            <div class="informative-section-container" style="width: 20%;">
+                <p class="informative-section-header">
+                    Ethnicity Codes
+                </p>
+                <span class="informative-section-label">
+                    A <span class="informative-section-value">
+                        -H - Hispanic, Latino,
+                        or Spanish origins
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    N <span class="informative-section-value">
+                        - Not Hispanic, Latino,
+                        or Spanish origins
+                    </span>
+                </span>
+
+            </div>
+            <div class="informative-section-container" style="width: 50%;">
+                <p class="informative-section-header">
+                    Employment Codes:
+                </p>
+                <span class="informative-section-label">
+                    E <span class="informative-section-value">
+                        Employed full-time
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    PT <span class="informative-section-value">
+                        - Employed part time
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    R <span class="informative-section-value">
+                        - Retired
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    US <span class="informative-section-value">
+                        - Unemployed six months or less;
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    UL <span class="informative-section-value">
+                        - Unemployed longer than six months
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    NL <span class="informative-section-value">
+                        - Not in labor force
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    M <span class="informative-section-value">
+                        - Migrant Seasonal farm worker
+                    </span>
+                </span>
+
+
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="informative-section-container" style="width: 40%;">
+                <p class="informative-section-header">
+                    Education codes:
+                </p>
+                <span class="informative-section-label">
+                    A <span class="informative-section-value">
+                        -Asian
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    B <span class="informative-section-value">
+                        - Black or African American
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    I <span class="informative-section-value">
+                        -American Indian or Alaska Native
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    P <span class="informative-section-value">
+                        -Native Hawaiian or other Pacific Island
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    W <span class="informative-section-value">
+                        -White
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    M <span class="informative-section-value">
+                        -Multi-race
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    O <span class="informative-section-value">
+                        -Other
+                    </span>
+                </span>
+            </div>
+            <div class="informative-section-container" style="width: 40%;">
+                <p class="informative-section-header">
+                    Health Insurance Codes:
+
+                </p>
+                <span class="informative-section-label">
+                    A <span class="informative-section-value">
+                        -H - Hispanic, Latino,
+                        or Spanish origins
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    N <span class="informative-section-value">
+                        - Not Hispanic, Latino,
+                        or Spanish origins
+                    </span>
+                </span>
+
+            </div>
+            <div class="informative-section-container" style="width: 20%;">
+                <p class="informative-section-header">
+                    Military Codes
+                </p>
+                <span class="informative-section-label">
+                    E <span class="informative-section-value">
+                        Employed full-time
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    PT <span class="informative-section-value">
+                        - Employed part time
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    R <span class="informative-section-value">
+                        - Retired
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    US <span class="informative-section-value">
+                        - Unemployed six months or less;
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    UL <span class="informative-section-value">
+                        - Unemployed longer than six months
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    NL <span class="informative-section-value">
+                        - Not in labor force
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    M <span class="informative-section-value">
+                        - Migrant Seasonal farm worker
+                    </span>
+                </span>
+
+
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 40%;">
+                <div class="row-header-text">
+                    Is anybody in the household affiliated with this agency as an employee/staff member, board member,
+                    or
+                    subcrontractor, or related to any such member?
+                </div>
+            </div>
+            <div class="row-header" style="width: 60%;">
+                <div class="row-header-text">
+                    Household Type (please check one)
+                </div>
+            </div>
+
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-row" style="width:40%">
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked"> No</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Yes (please list) </span>
+                </label>
+            </div>
+
+            <div class="row-value-flex-column" style="width:60%;height: 70px;">
+                <label class="check-box-container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked"> Single Person</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Two-Parent Household </span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Multi-Generational Household (three or more generations) </span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label"> Two Adults, No Children </span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Non-related adults with children</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Single Female Parent</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Single Male Parent</span>
+                </label>
+                <label class="check-box-container">
+                    <input type="checkbox">
+                    <span class="checkbox-label">Other</span>
+                </label>
+            </div>
+
+        </div>
+        <div class="pdf-section-header">
+            Part V: Certification
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-row" style="width:100%">
+                <b>Disclaimer: </b>I certify under the penalties for perjury and fraud that the information provided in
+                this application is correct and true. I understand that I may be required to verify these statements and
+                hereby give my consent to the agency from which I am requesting assistance to make contact with any
+                necessary persons to verify these statements. I certify that I am an adult residing in this household
+                and listed on this application, or have a legal power of attorney for an adult residing in this
+                household and listed on this application. I am a resident of Indiana and an applicant for the Energy
+                Assistance and/or Weatherization Assistance Program(s). I acknowledge any services or materials provided
+                to my household will be a gift without consideration or payment by me. I give permission to the State of
+                Indiana and the agency from which I am requesting assistance to obtain information from my energy
+                supplier, including about my energy usage and payment history. I understand that the State of Indiana
+                may use information provided on this form for purposes of research, evaluation and analysis. I also
+                understand that the State of Indiana may use information provided on this form to see if I qualify for
+                any other assistance programs. I hereby release the State of Indiana, the Local Service Provider or
+                other entity from any liability whatsoever resulting from delivery of these activities. I have received
+                no expressed or implied warranties concerning my receipt of these services. I also acknowledge that if I
+                misrepresent or fail to disclose any information requested in this application, or if I am signing or
+                submitting this application or any supporting documentation without the legal authority to do so, I may
+                become ineligible from receiving Energy Assistance and/or Weatherization Assistance and may be required
+                to repay any assistance and/or benefits that the household has received based on any such noncompliance,
+                misrepresentation, or omission.
+                <p>
+                    <b>
+                        Energy Assistance Program and Low Income Home Water Assistance Program benefits are provided
+                        without
+                        regard to race, age, color, religion, sex, disability,national origin, ancestry, or status as a
+                        veteran
+                    </b>
+
+                </p>
+
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="row-header" style="width: 50%;">
+                <div class="row-header-text">
+                    Signature of applicant (required)
+                </div>
+            </div>
+            <div class="row-header" style="width: 50%;">
+                <div class="row-header-text">
+                    Date (required)
+                </div>
+            </div>
+
+        </div>
+        <div class="flex-container">
+            <div class="row-value-flex-column" style="width:50%;height: 48px;">
+            </div>
+            <div class="row-value-flex-column" style="width:50%;height: 48px;">
+                07/19/2024
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
