@@ -4,6 +4,8 @@ const port = 3000;
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
 const liheap_pdfData = require('./liheap_pdfData.json');
+const convert = require('xml-js');
+var moment = require('moment');
 
 app.get("/", (req, res) => {
     var html = fs.readFileSync('./application.html', "utf8");
@@ -20,7 +22,7 @@ app.get("/", (req, res) => {
         fontPopins,
         fontRoboto,
         name: 'sudhanshu',
-        data:liheap_pdfData
+        data: liheap_pdfData
     }
     var options = {
         childProcessOptions: {
@@ -30,20 +32,18 @@ app.get("/", (req, res) => {
         },
         format: "A4",
         orientation: "portrait",
-        // header: {
-        //     height: "20mm",
-        //     contents: {
-        //         first: '<span style="color: #444;"></span>',
-        //         default: '<div style="display: -webkit-box;display: -webkit-flex;-webkit-justify-content: space-between;justify-content: space-between;" ><p style="color: #300196;>ApplicationId </p> <p style="color: #300196;>{{page}}</span>/<span>{{pages}}</p> </div>', // fallback value
-        //     }
-        // },
-        // footer: {
-        //     height: "20mm",
-        //     contents: {
-        //         first: '<span style="color: #9880CB;>Disclaimer - The document contains all the information provided by the tenant and the property owner.</span>',
-        //         default: '<span style="color: #444;"></span>',
-        //     }
-        // }
+        header: {
+            height: "5px",
+            contents: {
+                default: '<div style=" background-color: #DBEAFE;margin-top:-5px;"></div>',
+            }
+        },
+        footer: {
+            height: "30px",
+            contents: {
+                first: '<div style="background-color: #DBEAFE; margin-bottom:-10px; font-size: 8px;font-weight: 500;line-height: 16px;text-align: center;color:#475569">Please complete and sign page 2 - Application is not valid without signature and date. Use blue or black ink only and be sure to fully complete all fields. Failure to fully complete application may delay processing</div>',
+            }
+        }
     };
     var document = {
         html: html,
@@ -58,7 +58,27 @@ app.get("/", (req, res) => {
         .create(document, options)
         .then((response) => {
             console.log('res.filename', res.filename);
-            res.send("Hello World!");
+            let currentDate = moment().format('YYYYMMDD');
+            let currentTime = moment().unix();
+            // res.send("Hello World!");
+            //format the arrays to string
+
+            //remove the nested data
+            let liheap_XMLData = Object.entries(liheap_pdfData).reduce((accumulator, [key, value]) => {
+                return { ...accumulator, ...value };
+            }, {});
+           
+            liheap_XMLData = convertJsonArrayToKeys(liheap_XMLData);
+            console.log('liheap_XMLData',liheap_XMLData);
+            let xmlfileData = {
+                "_declaration": { "_attributes": { "version": "1.0", "encoding": "utf-8" } },
+                "DocHeader": { "_attributes": { "CreateDate": currentDate, "CreateTime": currentTime }, "Files": { "FileA": "application.pdf" }, "Fields": { "_attributes": { "Form": "tenant" }, ...liheap_XMLData } }
+            };
+            const json = JSON.stringify(xmlfileData);
+            const agencyXML = convert.json2xml(json, { compact: true, spaces: 1 });
+            fs.writeFileSync("./application.xml", agencyXML, function (err) {
+                if (err) throw err;
+            });
         })
         .catch((error) => {
             console.log('came in exception bro', __dirname)
@@ -66,6 +86,33 @@ app.get("/", (req, res) => {
         });
 
 });
+function convertJsonArrayToKeys(input) {
+    const output = {};
+
+    // Iterate over each key in the input JSON
+    for (const key in input) {
+        const value = input[key];
+
+        // Check if the value is an array
+        if (Array.isArray(value)) {
+            value.forEach((item, index) => {
+                // Create new dynamic keys
+                if (typeof item === 'object') {
+                    for (const chkey in item) {
+                        output[`${chkey}${index+1}`] = item[chkey];
+                    }
+
+                } else {
+                    output[`${key}${index+1}`] = item;
+                }
+                //output[`${key}${index}`] = typeof item === 'object' ? item : item;
+            });
+        }else{
+            output[`${key}`] = value;
+        }
+    }
+    return output;
+}
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);

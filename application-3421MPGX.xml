@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocHeader CreateDate="20240731" CreateTime="1722437358">
+ <Files>
+  <FileA>application.pdf</FileA>
+ </Files>
+ <Fields Form="tenant">
+  <date_received>07/19/2024</date_received>
+  <application_id>3421MPGX</application_id>
+  <application_type>application_type</application_type>
+  <eligibility>eligibility</eligibility>
+  <community_center>community_center</community_center>
+  <communication_type/>
+  <household_out_of_fuel>Yes</household_out_of_fuel>
+  <household_has_de_notice>Yes</household_has_de_notice>
+  <household_heat_source_inoperable>Yes</household_heat_source_inoperable>
+  <electricity_or_heating_disconnected>Yes</electricity_or_heating_disconnected>
+  <ci_name>as</ci_name>
+  <ci_ssn>XXX-XX-5555</ci_ssn>
+  <ci_zip_code>46711</ci_zip_code>
+  <ci_county>Yes</ci_county>
+  <ci_state>IN</ci_state>
+  <ci_city>In</ci_city>
+  <ci_physical_address>house number, city, state, and zip code</ci_physical_address>
+  <ci_po_or_alternate_mailing_address>Yes</ci_po_or_alternate_mailing_address>
+  <ci_alternate_mailing_address>house number, city, state, and zip code</ci_alternate_mailing_address>
+  <ci_landline_number>(999)-999-9999</ci_landline_number>
+  <ci_mobile_number>(999)-999-9999</ci_mobile_number>
+  <ci_email_address>example@domain.com</ci_email_address>
+  <ci_sms_notification>Yes</ci_sms_notification>
+  <ci_email_notification>Yes</ci_email_notification>
+  <haui_type_of_home>Multi-unit (apartment, condo, duplex, etc.)</haui_type_of_home>
+  <haui_electricity_vendor>electricity company</haui_electricity_vendor>
+  <haui_heating_vendor>heating provider</haui_heating_vendor>
+  <haui_own_home_or_rental>Own</haui_own_home_or_rental>
+  <haui_electricity_included_house_rent>Yes</haui_electricity_included_house_rent>
+  <haui_heat_included_house_rent>Yes</haui_heat_included_house_rent>
+  <haui_primary_heating_source1>Furnace/Heat Pump</haui_primary_heating_source1>
+  <haui_primary_heating_source2>Furnace/Heat Pump</haui_primary_heating_source2>
+  <haui_heating_system_functional>Yes</haui_heating_system_functional>
+  <haui_heating_fuel1>Electric</haui_heating_fuel1>
+  <haui_secondary_heating_source>Yes</haui_secondary_heating_source>
+  <haui_secondary_heating_source_explanation/>
+  <iab_sources_of_income_received_by_anyone1>Employment wages</iab_sources_of_income_received_by_anyone1>
+  <aa_assistance_received_by_anyone1>Housing choice voucher (section 8)</aa_assistance_received_by_anyone1>
+  <aa_assistance_received_by_anyone2>public housing</aa_assistance_received_by_anyone2>
+  <aa_assistance_received_by_anyone3>permanent supportive housing</aa_assistance_received_by_anyone3>
+  <aa_assistance_received_by_anyone4>VASH</aa_assistance_received_by_anyone4>
+  <aa_assistance_received_by_anyone5>SNAP (food stamps) TANF</aa_assistance_received_by_anyone5>
+  <aa_assistance_received_by_anyone6>child care voucher</aa_assistance_received_by_anyone6>
+  <aa_assistance_received_by_anyone7>Affordable Care Act subsidy</aa_assistance_received_by_anyone7>
+  <aa_paid_chil_support>Yes</aa_paid_chil_support>
+  <aa_not_working_nor_attending_school>Yes</aa_not_working_nor_attending_school>
+  <hmd_full_name>Ram</hmd_full_name>
+  <hmd_dob>07/30/2024</hmd_dob>
+  <hmd_gender>male</hmd_gender>
+  <hmd_race>A - Asian</hmd_race>
+  <hmd_ethnicity>H - Hispanic, Latino</hmd_ethnicity>
+  <hmd_current_employment_status>FT - Employed full-time</hmd_current_employment_status>
+  <hmd_highest_level_of_education>A - Grades 0-8</hmd_highest_level_of_education>
+  <hmd_health_insurance>Yes</hmd_health_insurance>
+  <hmd_current_military_status>A - Active-duty military</hmd_current_military_status>
+  <hmd_add_additional_hm>No</hmd_add_additional_hm>
+  <hmd_disable>Yes</hmd_disable>
+  <hmd_associated_with_the_agency>Yes</hmd_associated_with_the_agency>
+  <hmd_type_of_household>Single person</hmd_type_of_household>
+  <hmd_mi>MI</hmd_mi>
+  <hmd_full_name1>Sham</hmd_full_name1>
+  <hmd_dob1>07-11-2024</hmd_dob1>
+  <hmd_gender1>Male</hmd_gender1>
+  <hmd_disable1>Yes</hmd_disable1>
+  <hmd_race1>A - Asian</hmd_race1>
+  <hmd_ethnicity1>H - Hispanic, Latino</hmd_ethnicity1>
+  <hmd_current_employment_status1>FT - Employed full-time</hmd_current_employment_status1>
+  <hmd_highest_level_of_education1>A - Grades 0-8</hmd_highest_level_of_education1>
+  <hmd_health_insurance1>Yes</hmd_health_insurance1>
+  <hmd_current_military_status1>A - Active-duty military</hmd_current_military_status1>
+  <hmd_mi1>MI</hmd_mi1>
+  <hmd_full_name2>Laxman</hmd_full_name2>
+  <hmd_dob2>07-10-2024</hmd_dob2>
+  <hmd_gender2>Male</hmd_gender2>
+  <hmd_race2>A - Asian</hmd_race2>
+  <hmd_disable2>Yes</hmd_disable2>
+  <hmd_ethnicity2>H - Hispanic, Latino</hmd_ethnicity2>
+  <hmd_current_employment_status2>FT - Employed full-time</hmd_current_employment_status2>
+  <hmd_highest_level_of_education2>A - Grades 0-8</hmd_highest_level_of_education2>
+  <hmd_health_insurance2>Yes</hmd_health_insurance2>
+  <hmd_current_military_status2>A - Active-duty military</hmd_current_military_status2>
+  <hmd_mi2>MI</hmd_mi2>
+  <c_statement_for_initials>statement for initials</c_statement_for_initials>
+  <s_signature_of_applicant>signature of applicant</s_signature_of_applicant>
+  <s_date_of_signature>07/30/2024</s_date_of_signature>
+  <apr_up_for_weatherization>up for weatherization</apr_up_for_weatherization>
+ </Fields>
+</DocHeader>

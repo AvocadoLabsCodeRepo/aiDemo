@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <title>Hello world!</title>
     <style>
-      
-             /* src: url('./Roboto-Regular.ttf'); */
+        /* src: url('./Roboto-Regular.ttf'); */
         @font-face {
             font-family: 'Poppins';
             src: url('./Poppins-Regular.otf');
@@ -118,7 +117,7 @@
         .pdf-container {
             margin: 20px;
             /* margin-right: 20px; */
-            page-break-inside: avoid;
+
 
         }
 
@@ -162,8 +161,6 @@
             padding-top: 2px;
             padding-bottom: 2px;
             width: 100%;
-            page-break-inside: avoid;
-
         }
 
 
@@ -180,7 +177,7 @@
             flex: none;
             order: 1;
             flex-grow: 0;
-            page-break-inside: avoid;
+
             margin-top: 2px;
 
         }
@@ -192,7 +189,7 @@
             box-sizing: border-box;
             display: flex;
             border: 1px solid #EFF6FF;
-            page-break-inside: avoid;
+
 
             /* height: 25px; */
         }
@@ -205,8 +202,6 @@
             padding-top: 2px;
             padding-bottom: 2px;
             padding-left: 2px;
-            page-break-inside: avoid;
-
         }
 
         .row-value-flex-column {
@@ -315,13 +310,7 @@
             line-height: 10.5px;
         }
 
-        .footer-text {
-            /* font-family: Poppins; */
-            font-size: 8px;
-            font-weight: 500;
-            line-height: 16px;
-            text-align: center;
-        }
+
 
         .informative-section-header {
             /* font-family: Poppins; */
@@ -354,7 +343,6 @@
         .informative-section-container {
             background-color: #EFF6FF;
             background: #EFF6FF;
-            page-break-inside: avoid;
             padding-top: 2px;
             padding-bottom: 2px;
             box-sizing: border-box;
@@ -738,12 +726,14 @@
                         <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" "Multi-unit (apartment, condo, duplex, etc.)"}}
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" "Multi-unit (apartment,
+                        condo, duplex, etc.)"}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Multi-unit (apartment, condo, duplex, etc.)
                         </span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" "Multi-unit (apartment, condo, duplex, etc.)"}}
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" "Multi-unit (apartment,
+                        condo, duplex, etc.)"}}
                         <input type="checkbox">
                         <span class="checkbox-label">Multi-unit (apartment, condo, duplex, etc.)
                         </span>
@@ -847,16 +837,18 @@
 
                     <div class="row-value-text-flex-row">
                         <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "==" 'Yes'}}
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Included in rent</span>
-                        {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!=" 'Yes'}}
-                        <input type="checkbox">
-                        <span class="checkbox-label">Included in rent
-                        </span>
-                        {{/ifCond}}
-                        <span class="checkmark"> </span>
+                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "=="
+                            'Yes'}}
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked">Included in rent</span>
+                            {{/ifCond}}
+                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!="
+                            'Yes'}}
+                            <input type="checkbox">
+                            <span class="checkbox-label">Included in rent
+                            </span>
+                            {{/ifCond}}
+                            <span class="checkmark"> </span>
                             <!-- <input type="checkbox" checked="checked">
                             <span class="checkbox-label-checked"> Included in rent</span>
                             <span class="checkmark"> </span> -->
@@ -867,7 +859,7 @@
                 </div>
                 <div class="row-value-flex-column" style="width: 50%;">
                     <div class="row-value-text-flex-row">
-                        Heating Vendor:  {{data.home_and_utility_information.haui_heating_vendor}}
+                        Heating Vendor: {{data.home_and_utility_information.haui_heating_vendor}}
                     </div>
 
                     <div class="row-value-text-flex-row">
@@ -876,7 +868,8 @@
                             <input type="checkbox" checked="checked">
                             <span class="checkbox-label-checked">Included in rent</span>
                             {{/ifCond}}
-                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!=" 'Yes'}}
+                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!="
+                            'Yes'}}
                             <input type="checkbox">
                             <span class="checkbox-label">Included in rent
                             </span>
@@ -1231,12 +1224,8 @@
             </div>
 
         </div>
-        <p class="footer-text">
-            Please complete and sign page 2 - Application is not valid without signature and date.
-
-            Use blue or black ink only and be sure to fully complete all fields. Failure to fully complete
-            application may delay processing.
-        </p>
+        <div style="page-break-after:always">
+        </div>
         <div class="pdf-section-header">
             Part IV: Household Members and Demographics
         </div>
@@ -1803,8 +1792,11 @@
         </div>
         <div class="flex-container">
             <div class="row-value-flex-row" style="width:100%">
-                <b>Disclaimer: </b>
+                <!-- <p class="certification-text">
+                    <b>Disclaimer: </b>
+                </p> -->
                 <p class="certification-text">
+                    <b>Disclaimer: </b>
                     I certify under the penalties for perjury and fraud that the information provided in
                     this application is correct and true. I understand that I may be required to verify these statements
                     and
@@ -1869,7 +1861,7 @@
             <div class="row-value-flex-column" style="width:50%;height: 48px;">
             </div>
             <div class="row-value-flex-column" style="width:50%;height: 48px;">
-                07/19/2024
+                <span style="font-size: 10px; line-height: 15px;">07/19/2024</span>
             </div>
         </div>
 

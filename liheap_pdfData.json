@@ -1,9 +1,24 @@
 {
+    "basic_information":{
+        "date_received":"07/19/2024",
+        "application_id":"3421MPGX",
+        "application_type":"application_type",
+        "eligibility":"eligibility",
+        "community_center":"community_center",
+        "communication_type":"",
+        "household_out_of_fuel":"Yes",
+        "household_has_de_notice":"Yes",
+        "household_heat_source_inoperable":"Yes",
+        "electricity_or_heating_disconnected":"Yes"
+
+    },    
     "contact_information": {
         "ci_name": "as",
         "ci_ssn": "XXX-XX-5555",
         "ci_zip_code": "46711",
         "ci_county": "Yes",
+        "ci_state":"IN",
+        "ci_city":"In",
         "ci_physical_address": "house number, city, state, and zip code",
         "ci_po_or_alternate_mailing_address": "Yes",
         "ci_alternate_mailing_address": "house number, city, state, and zip code",
@@ -21,13 +36,15 @@
         "haui_electricity_included_house_rent": "Yes",
         "haui_heat_included_house_rent": "Yes",
         "haui_primary_heating_source": [
-            "Furnace/Heat Pump"
+            "Furnace/Heat Pump",
+             "Furnace/Heat Pump"
         ],
         "haui_heating_system_functional": "Yes",
         "haui_heating_fuel": [
             "Electric"
         ],
-        "haui_secondary_heating_source": "Yes"
+        "haui_secondary_heating_source": "Yes",
+        "haui_secondary_heating_source_explanation": ""
     },
     "income_and_benefits": {
         "iab_sources_of_income_received_by_anyone": [
@@ -58,30 +75,36 @@
         "hmd_health_insurance": "Yes",
         "hmd_current_military_status": "A - Active-duty military",
         "hmd_add_additional_hm": "No",
+        "hmd_disable": "Yes",
         "hmd_associated_with_the_agency": "Yes",
         "hmd_type_of_household": "Single person",
+        "hmd_mi": "MI",
         "additional_member_details": [
             {
                 "hmd_full_name": "Sham",
                 "hmd_dob": "07-11-2024",
                 "hmd_gender": "Male",
+                "hmd_disable": "Yes",
                 "hmd_race": "A - Asian",
                 "hmd_ethnicity": "H - Hispanic, Latino",
                 "hmd_current_employment_status": "FT - Employed full-time",
                 "hmd_highest_level_of_education": "A - Grades 0-8",
                 "hmd_health_insurance": "Yes",
-                "hmd_current_military_status": "A - Active-duty military"
+                "hmd_current_military_status": "A - Active-duty military",
+                "hmd_mi": "MI"
             },
             {
                 "hmd_full_name": "Laxman",
                 "hmd_dob": "07-10-2024",
                 "hmd_gender": "Male",
                 "hmd_race": "A - Asian",
+                "hmd_disable": "Yes",
                 "hmd_ethnicity": "H - Hispanic, Latino",
                 "hmd_current_employment_status": "FT - Employed full-time",
                 "hmd_highest_level_of_education": "A - Grades 0-8",
                 "hmd_health_insurance": "Yes",
-                "hmd_current_military_status": "A - Active-duty military"
+                "hmd_current_military_status": "A - Active-duty military",
+                "hmd_mi": "MI"
             }
         ]
     },
