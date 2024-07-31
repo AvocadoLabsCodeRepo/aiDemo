@@ -3,18 +3,24 @@ const app = express();
 const port = 3000;
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
+const liheap_pdfData = require('./liheap_pdfData.json');
+
 app.get("/", (req, res) => {
     var html = fs.readFileSync('./application.html', "utf8");
-    fontPath = fs.readFileSync('./Poppins-Regular.ttf');
+    // fontPath = fs.readFileSync('./Poppins-Regular.ttf');
+    fontPath = fs.readFileSync('./Poppins-Regular.otf');
     const fontPopins = fontPath.toString('base64');
-
-    const bitmap = fs.readFileSync("./pdfHeader.png");
+    fontPath = fs.readFileSync('./Roboto-Regular.ttf');
+    const fontRoboto = fontPath.toString('base64');
+    const bitmap = fs.readFileSync("./pdfLogo.png");
     const logo = bitmap.toString('base64');
-    console.log('logo', logo);
+
     let pdfData = {
         logo,
         fontPopins,
-        name: 'sudhanshu'
+        fontRoboto,
+        name: 'sudhanshu',
+        data:liheap_pdfData
     }
     var options = {
         childProcessOptions: {
@@ -50,7 +56,7 @@ app.get("/", (req, res) => {
     };
     return pdf
         .create(document, options)
-        .then((res) => {
+        .then((response) => {
             console.log('res.filename', res.filename);
             res.send("Hello World!");
         })

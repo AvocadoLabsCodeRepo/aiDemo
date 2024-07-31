@@ -4,27 +4,26 @@
 <head>
     <meta charset="utf-8" />
     <title>Hello world!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' type='text/css'> -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans&display=swap" rel="stylesheet"> -->
-
-
     <style>
-        /* @font-face {
+      
+             /* src: url('./Roboto-Regular.ttf'); */
+        @font-face {
             font-family: 'Poppins';
-            src: url('data:font/truetype;charset=utf-8;base64,{{fontPopins}}');
+            src: url('./Poppins-Regular.otf');
+            /* src: url('data:font/truetype;charset=utf-8;base64,{{fontPopins}}'); */
             font-weight: normal;
             font-style: normal;
+            /* font-family: 'Roboto';
+            src: url('data:font/truetype;charset=utf-8;base64,{{fontRoboto}}');
+            font-weight: normal;
+            font-style: normal; */
+        }
 
-        } */
         html {
             background-color: #DBEAFE;
             background: #DBEAFE;
-            font-family: 'Work Sans';
-            /* font-family: 'Poppins', sans-serif; */
+            /* font-family: 'Roboto'; */
+            font-family: 'Poppins';
         }
 
         body {
@@ -33,8 +32,87 @@
             margin: 0px;
             background-color: #DBEAFE;
             background: #DBEAFE;
-            font-family: 'Work Sans';
-            /* font-family: 'Poppins', sans-serif; */
+            /* font-family: 'Roboto'; */
+            font-family: 'Poppins';
+        }
+
+        .check-box-container {
+            display: block;
+            position: relative;
+            padding-left: 18px;
+            height: 13px;
+            margin-top: 2px;
+            margin-bottom: 1px;
+            margin-right: 2px;
+            ;
+            /* padding-top:2px; */
+            font-size: 7px;
+            color: #2563EB;
+            /* line-height: 10.5px; */
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        /* Hide the browser's default checkbox */
+        .check-box-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 11px;
+            width: 11px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .check-box-container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .check-box-container input:checked~.checkmark {
+            background-color: white;
+            border: 1px solid #2563EB;
+            border-radius: 2px;
+
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+
+        }
+
+        /* Show the checkmark when checked */
+        .check-box-container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .check-box-container .checkmark:after {
+            left: 4px;
+            top: 1px;
+            width: 2px;
+            height: 6px;
+            border: solid #2563EB;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+
         }
 
         .pdf-container {
@@ -44,13 +122,23 @@
 
         }
 
+        .logo-header-text {
+            /* font-family: Poppins; */
+            font-size: 8px;
+            font-weight: 600;
+            line-height: 12px;
+            text-align: center;
+            color: #475571;
+
+        }
+
         .pdf-title-header {
             font-weight: 600;
             font-size: 14px;
             line-height: 120%;
             text-align: center;
             color: #2563EB;
-            /* font-family: 'Poppins', sans-serif; */
+            font-family: 'Poppins';
 
 
         }
@@ -155,6 +243,7 @@
             flex: none;
             order: 1;
             flex-grow: 0;
+            padding-left: 2px;
         }
 
         .row-value-text {
@@ -179,6 +268,15 @@
             padding-left: 2px;
             border-top: 1px solid #EFF6FF;
             display: flex;
+            display: flex;
+            flex-direction: row;
+            /* align-items: center; */
+            display: -webkit-box;
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .flex-container {
@@ -198,8 +296,11 @@
         }
 
         .check-box-container {
+            display: -webkit-box;
+            display: -webkit-flex;
             display: flex;
             align-items: center;
+            -webkit-align-items: center;
         }
 
         .checkbox-label-checked {
@@ -260,6 +361,24 @@
             border: 1px solid #DBEAFE;
 
         }
+
+        .certification-text {
+            font-size: 8px;
+            font-weight: 400;
+            line-height: 12px;
+            text-align: left;
+            color: #475571;
+
+        }
+
+        .certification-text-bold {
+            font-size: 8px;
+            font-weight: 700;
+            line-height: 12px;
+            text-align: left;
+            color: #475571;
+
+        }
     </style>
 </head>
 
@@ -268,9 +387,14 @@
         <p class="pdf-title-header">Indiana Energy Assistance Program Application </p>
         <p class="pdf-sub-header">Program Year 2024</p>
         <div class="flex-container">
-            <div class="row-value-flex-row" style="width:50%">
-                <img style="display: block;margin-left: auto;margin-right: auto;" src="data:image/png;base64,{{logo}}"
-                    alt="Logo">
+            <div class="row-value-flex-column"
+                style="width:50%;justify-content: center; -webkit-justify-content:center;">
+                <img width="117px" height="29px" style="display: block;margin-left: auto;margin-right: auto;"
+                    src="data:image/png;base64,{{logo}}" alt="Logo">
+                <!-- <img  width="107px" style="display: block;margin-left: auto;margin-right: auto;" src="./pdfLogo.png"
+                    alt="Logo"> -->
+                <p class="logo-header-text"> Indiana Housing &
+                    Community Development Authority</p>
             </div>
             <div class="row-value-flex-column" style="width:50%">
                 <div class="pdf-section-header">
@@ -296,15 +420,20 @@
                     <div class="row-value-flex-row" style="width:100%">
                         <label class="check-box-container">
                             <input type="checkbox" checked="checked">
-                            <span class="checkbox-label-checked"> Mail-In</span>
+                            <span class="checkbox-label-checked">Mail-In</span>
+                            <span class="checkmark "></span>
                         </label>
+
                         <label class="check-box-container">
                             <input type="checkbox">
-                            <span class="checkbox-label"> Appointment </span>
+                            <span class="checkbox-label">Appointment</span>
+                            <span class="checkmark"> </span>
                         </label>
                         <label class="check-box-container">
+
                             <input type="checkbox">
                             <span class="checkbox-label"> Outreach/Home Visit/Other</span>
+                            <span class="checkmark checkbox-label"></span>
                         </label>
                     </div>
                     <div class="row-value-flex-row" style="width:100%">
@@ -314,10 +443,12 @@
                         <label class="check-box-container">
                             <input type="checkbox" checked="checked">
                             <span class="checkbox-label-checked"> Yes</span>
+                            <span class="checkmark checkbox-label"> </span>
                         </label>
                         <label class="check-box-container">
                             <input type="checkbox">
                             <span class="checkbox-label"> No </span>
+                            <span class="checkmark"> </span>
                         </label>
                     </div>
                     <div class="row-value-flex-row" style="width:100%">
@@ -327,10 +458,12 @@
                         <label class="check-box-container">
                             <input type="checkbox" checked="checked">
                             <span class="checkbox-label-checked"> Yes</span>
+                            <span class="checkmark"> </span>
                         </label>
                         <label class="check-box-container">
                             <input type="checkbox">
                             <span class="checkbox-label"> No </span>
+                            <span class="checkmark"> </span>
                         </label>
                     </div>
                     <div class="row-value-flex-row" style="width:100%">
@@ -340,10 +473,12 @@
                         <label class="check-box-container">
                             <input type="checkbox" checked="checked">
                             <span class="checkbox-label-checked"> Yes</span>
+                            <span class="checkmark"> </span>
                         </label>
                         <label class="check-box-container">
                             <input type="checkbox">
                             <span class="checkbox-label"> No </span>
+                            <span class="checkmark"> </span>
                         </label>
                     </div>
                 </div>
@@ -355,11 +490,12 @@
                 <div class="row-value-text">
                     <label class="check-box-container">
                         <input type="checkbox" checked="checked">
-                        <span class="checkbox-label">Check here if your electric or heating utility is
+                        <span class="checkbox-label-checked">Check here if your electric or heating utility is
                             disconnected or
                             scheduled for disconnection, or you are low or out of bulk heating fuel or
                             prepaid
                             electricity.</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <p>
                         If your utility has been disconnected or is scheduled for disconnection, or if
@@ -398,18 +534,18 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 50%;">
                 <div class="row-value-text-flex-row">
-                    Karen Fox
+                    {{data.contact_information.ci_name}}
                 </div>
 
             </div>
             <div class="row-value-flex-column" style="width: 25%;">
                 <div class="row-value-text-flex-row">
-                    xxx-xx- 1234
+                    {{data.contact_information.ci_ssn}}
                 </div>
             </div>
             <div class="row-value-flex-column" style="width: 25%;">
                 <div class="row-value-text-flex-row">
-                    Marion County
+                    {{data.contact_information.ci_county}}
                 </div>
             </div>
         </div>
@@ -440,25 +576,23 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 50%;">
                 <div class="row-value-text-flex-row">
-                    (574) 204-2262
-                    ,318 Gernhart Ave
-                    Mishawaka, Indiana(IN)
+                    {{data.contact_information.ci_physical_address}}
                 </div>
 
             </div>
             <div class="row-value-flex-column" style="width: 16.66%;">
                 <div class="row-value-text-flex-row">
-                    IN
+                    {{data.contact_information.ci_state}}
                 </div>
             </div>
             <div class="row-value-flex-column" style="width: 16.66%;">
                 <div class="row-value-text-flex-row">
-                    Marion County
+                    {{data.contact_information?.ci_city}}
                 </div>
             </div>
             <div class="row-value-flex-column" style="width: 16.66%;">
                 <div class="row-value-text-flex-row">
-                    46544
+                    {{data.contact_information.ci_zip_code}}
                 </div>
             </div>
         </div>
@@ -475,9 +609,10 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 100%;">
                 <div class="row-value-text-flex-row">
-                    (574) 204-2262
-                    ,318 Gernhart Ave
-                    Mishawaka, Indiana(IN)
+                    {{#ifCond data.contact_information.ci_po_or_alternate_mailing_address "==" 'Yes'}}
+                    {{data.contact_information.ci_alternate_mailing_address}}
+                    {{/ifCond}}
+
                 </div>
 
             </div>
@@ -511,17 +646,19 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 30%;">
                 <div class="row-value-text-flex-row">
-                    1234567890
+                    {{data.contact_information.ci_landline_number}}
                 </div>
 
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked"> Landline</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label"> Mobile</span>
+                        <span class="checkmark"> </span>
                     </label>
 
                 </div>
@@ -529,24 +666,39 @@
             </div>
             <div class="row-value-flex-column" style="width: 30%;">
                 <div class="row-value-text-flex-row">
-                    1234567890
+                    {{data.contact_information.ci_mobile_number}}
                 </div>
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
+                        {{#ifCond data.contact_information.ci_sms_notification "==" 'Yes'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked"> Consent to receive texts</span>
+                        {{/ifCond}}
+                        {{#ifCond data.contact_information.ci_sms_notification "==" 'No'}}
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Consent to receive texts</span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
                     </label>
                 </div>
             </div>
             <div class="row-value-flex-column" style="width: 40%;">
                 <div class="row-value-text-flex-row">
-                    foxkaren12345@gmail.com
+                    {{data.contact_information.ci_email_address}}
                 </div>
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
+                        {{#ifCond data.contact_information.ci_email_notification "==" 'Yes'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked"> Check box to give consent for us to e-mail
                             you.</span>
+                        {{/ifCond}}
+                        {{#ifCond data.contact_information.ci_email_notification "==" 'No'}}
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Check box to give consent for us to e-mail
+                            you.</span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
                     </label>
                 </div>
 
@@ -563,7 +715,8 @@
             </div>
             <div class="row-header" style="width: 50%;">
                 <div class="row-header-text">
-                    Utilities and Payment
+                    Home Ownership (Please check one)
+
                 </div>
             </div>
         </div>
@@ -572,79 +725,168 @@
 
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" 'Site-built single house'}}
                         <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked"> Site-built single house</span>
+                        <span class="checkbox-label-checked"> Site-built single house
+                        </span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" 'Site-built single house'}}
+                        <input type="checkbox">
+                        <span class="checkbox-label">Site-built single house
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" "Multi-unit (apartment, condo, duplex, etc.)"}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Multi-unit (apartment, condo, duplex, etc.)
+                        </span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" "Multi-unit (apartment, condo, duplex, etc.)"}}
                         <input type="checkbox">
+                        <span class="checkbox-label">Multi-unit (apartment, condo, duplex, etc.)
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
+                        <!-- <input type="checkbox">
                         <span class="checkbox-label"> Multi-unit (apartment, condo, duplex, etc.)</span>
+                        <span class="checkmark"> </span> -->
                     </label>
                     <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" 'Mobile home'}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Mobile home</span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" 'Mobile home'}}
                         <input type="checkbox">
+                        <span class="checkbox-label">Mobile home
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark">
+                            <!-- <input type="checkbox">
                         <span class="checkbox-label"> Mobile home</span>
+                        <span class="checkmark"> </span> -->
                     </label>
                     <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" 'Other'}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Other</span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" 'Other'}}
                         <input type="checkbox">
-                        <span class="checkbox-label"> Other</span>
+                        <span class="checkbox-label">Other
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark">
+
                     </label>
 
                 </div>
 
             </div>
-            <div class="row-value-flex-row" style="width: 50%;">
-                <div class="row-value-flex-column" style="width: 50%;">
-                    <div class="row-value-text-flex-row">
-                        Electricity Vendor:
-                    </div>
-
-                    <div class="row-value-text-flex-row">
-                        <label class="check-box-container">
-                            <input type="checkbox" checked="checked">
-                            <span class="checkbox-label-checked"> Included in rent</span>
-                        </label>
-                    </div>
-
-
-                </div>
-                <div class="row-value-flex-column" style="width: 50%;">
-                    <div class="row-value-text-flex-row">
-                        Heating Vendor::
-                    </div>
-
-                    <div class="row-value-text-flex-row">
-                        <label class="check-box-container">
-                            <input type="checkbox">
-                            <span class="checkbox-label"> Included in rent</span>
-                        </label>
-                    </div>
+            <div class="row-value-flex-column" style="width:50%">
+                <div class="row-value-text-flex-row">
+                    <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "==" 'Own'}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Own</span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "!=" 'Own'}}
+                        <input type="checkbox">
+                        <span class="checkbox-label">Own
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark">
+                            <!-- <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Own</span>
+                        <span class="checkmark"> </span> -->
+                    </label>
+                    <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "==" 'Rent'}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Rent</span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "!=" 'Rent'}}
+                        <input type="checkbox">
+                        <span class="checkbox-label">Rent
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
+                    </label>
+                    <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "==" 'Other'}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Other</span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "!=" 'Other'}}
+                        <input type="checkbox">
+                        <span class="checkbox-label">Other
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
+                    </label>
                 </div>
             </div>
+
         </div>
         <div class="flex-container">
 
             <div class="row-header" style="width: 100%">
                 <div class="row-header-text">
-                    Home Ownership (Please check one)
-
+                    Utilities and Payment
                 </div>
             </div>
         </div>
         <div class="flex-container">
-            <div class="row-value-flex-column" style="width:100%">
+            <div class="row-value-flex-row" style="width: 100%;">
+                <div class="row-value-flex-column" style="width: 50%;">
+                    <div class="row-value-text-flex-row">
+                        Electricity Vendor: {{data.home_and_utility_information.haui_electricity_vendor}}
+                    </div>
 
-                <div class="row-value-text-flex-row">
-                    <label class="check-box-container">
+                    <div class="row-value-text-flex-row">
+                        <label class="check-box-container">
+                        {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "==" 'Yes'}}
                         <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Own</span>
-                    </label>
-                    <label class="check-box-container">
+                        <span class="checkbox-label-checked">Included in rent</span>
+                        {{/ifCond}}
+                        {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!=" 'Yes'}}
                         <input type="checkbox">
-                        <span class="checkbox-label">Rent</span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label">Other</span>
-                    </label>
+                        <span class="checkbox-label">Included in rent
+                        </span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
+                            <!-- <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked"> Included in rent</span>
+                            <span class="checkmark"> </span> -->
+                        </label>
+                    </div>
+
+
+                </div>
+                <div class="row-value-flex-column" style="width: 50%;">
+                    <div class="row-value-text-flex-row">
+                        Heating Vendor:  {{data.home_and_utility_information.haui_heating_vendor}}
+                    </div>
+
+                    <div class="row-value-text-flex-row">
+                        <label class="check-box-container">
+                            {{#ifCond data.home_and_utility_information.haui_heat_included_house_rent "==" 'Yes'}}
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked">Included in rent</span>
+                            {{/ifCond}}
+                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!=" 'Yes'}}
+                            <input type="checkbox">
+                            <span class="checkbox-label">Included in rent
+                            </span>
+                            {{/ifCond}}
+                            <span class="checkmark"> </span>
+                            <!-- <input type="checkbox">
+                            <span class="checkbox-label"> Included in rent</span>
+                            <span class="checkmark"> </span> -->
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -668,18 +910,22 @@
                     <label class="check-box-container">
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label">Baseboard/Wall Unit</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label">Wood Stove</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label"> Other</span>
+                        <span class="checkmark"> </span>
                     </label>
 
                 </div>
@@ -691,52 +937,28 @@
                     <label class="check-box-container">
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label">Baseboard/Wall Unit</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label">Wood Stove</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label"> Other</span>
+                        <span class="checkmark"> </span>
                     </label>
 
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="flex-container">
-
-            <div class="row-header" style="width: 100%">
-                <div class="row-header-text">
-                    Do you have a secondary heating source installed?
-                </div>
-            </div>
-        </div>
-        <div class="flex-container">
-            <div class="row-value-flex-column" style="width:100%">
-
-                <div class="row-value-text-flex-row">
-                    <label class="check-box-container">
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Yes</span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label">No</span>
-                    </label>
-                </div>
-                <div class="row-value-text-flex-row">
-                    <div> <span>If yes, please describe: </span></div>
-                </div>
-
-            </div>
         </div>
         <div class="flex-container">
 
@@ -753,10 +975,12 @@
                     <label class="check-box-container">
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Yes</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label">No</span>
+                        <span class="checkmark"> </span>
                     </label>
                 </div>
                 <div class="row-value-text-flex-row">
@@ -783,66 +1007,82 @@
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
 
             </div>
@@ -863,66 +1103,82 @@
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Wood Stove</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <!-- </div> -->
             </div>
@@ -948,10 +1204,12 @@
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Yes (please submit proof of
                             payments)</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label">No</span>
+                        <span class="checkmark"> </span>
                     </label>
 
                 </div>
@@ -962,10 +1220,12 @@
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Yes (please submit proof of
                             payments)</span>
+                        <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
                         <input type="checkbox">
                         <span class="checkbox-label">No</span>
+                        <span class="checkmark"> </span>
                     </label>
                 </div>
             </div>
@@ -1485,10 +1745,12 @@
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked"> No</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Yes (please list) </span>
+                    <span class="checkmark"> </span>
                 </label>
             </div>
 
@@ -1496,34 +1758,42 @@
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked"> Single Person</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Two-Parent Household </span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Multi-Generational Household (three or more generations) </span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label"> Two Adults, No Children </span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Non-related adults with children</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Single Female Parent</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Single Male Parent</span>
+                    <span class="checkmark"> </span>
                 </label>
                 <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Other</span>
+                    <span class="checkmark"> </span>
                 </label>
             </div>
 
@@ -1533,27 +1803,44 @@
         </div>
         <div class="flex-container">
             <div class="row-value-flex-row" style="width:100%">
-                <b>Disclaimer: </b>I certify under the penalties for perjury and fraud that the information provided in
-                this application is correct and true. I understand that I may be required to verify these statements and
-                hereby give my consent to the agency from which I am requesting assistance to make contact with any
-                necessary persons to verify these statements. I certify that I am an adult residing in this household
-                and listed on this application, or have a legal power of attorney for an adult residing in this
-                household and listed on this application. I am a resident of Indiana and an applicant for the Energy
-                Assistance and/or Weatherization Assistance Program(s). I acknowledge any services or materials provided
-                to my household will be a gift without consideration or payment by me. I give permission to the State of
-                Indiana and the agency from which I am requesting assistance to obtain information from my energy
-                supplier, including about my energy usage and payment history. I understand that the State of Indiana
-                may use information provided on this form for purposes of research, evaluation and analysis. I also
-                understand that the State of Indiana may use information provided on this form to see if I qualify for
-                any other assistance programs. I hereby release the State of Indiana, the Local Service Provider or
-                other entity from any liability whatsoever resulting from delivery of these activities. I have received
-                no expressed or implied warranties concerning my receipt of these services. I also acknowledge that if I
-                misrepresent or fail to disclose any information requested in this application, or if I am signing or
-                submitting this application or any supporting documentation without the legal authority to do so, I may
-                become ineligible from receiving Energy Assistance and/or Weatherization Assistance and may be required
-                to repay any assistance and/or benefits that the household has received based on any such noncompliance,
-                misrepresentation, or omission.
-                <p>
+                <b>Disclaimer: </b>
+                <p class="certification-text">
+                    I certify under the penalties for perjury and fraud that the information provided in
+                    this application is correct and true. I understand that I may be required to verify these statements
+                    and
+                    hereby give my consent to the agency from which I am requesting assistance to make contact with any
+                    necessary persons to verify these statements. I certify that I am an adult residing in this
+                    household
+                    and listed on this application, or have a legal power of attorney for an adult residing in this
+                    household and listed on this application. I am a resident of Indiana and an applicant for the Energy
+                    Assistance and/or Weatherization Assistance Program(s). I acknowledge any services or materials
+                    provided
+                    to my household will be a gift without consideration or payment by me. I give permission to the
+                    State of
+                    Indiana and the agency from which I am requesting assistance to obtain information from my energy
+                    supplier, including about my energy usage and payment history. I understand that the State of
+                    Indiana
+                    may use information provided on this form for purposes of research, evaluation and analysis. I also
+                    understand that the State of Indiana may use information provided on this form to see if I qualify
+                    for
+                    any other assistance programs. I hereby release the State of Indiana, the Local Service Provider or
+                    other entity from any liability whatsoever resulting from delivery of these activities. I have
+                    received
+                    no expressed or implied warranties concerning my receipt of these services. I also acknowledge that
+                    if I
+                    misrepresent or fail to disclose any information requested in this application, or if I am signing
+                    or
+                    submitting this application or any supporting documentation without the legal authority to do so, I
+                    may
+                    become ineligible from receiving Energy Assistance and/or Weatherization Assistance and may be
+                    required
+                    to repay any assistance and/or benefits that the household has received based on any such
+                    noncompliance,
+                    misrepresentation, or omission.
+
+                </p>
+
+                <p class="certification-text-bold">
                     <b>
                         Energy Assistance Program and Low Income Home Water Assistance Program benefits are provided
                         without

@@ -1,0 +1,98 @@
+{
+    "contact_information": {
+        "ci_name": "as",
+        "ci_ssn": "XXX-XX-5555",
+        "ci_zip_code": "46711",
+        "ci_county": "Yes",
+        "ci_physical_address": "house number, city, state, and zip code",
+        "ci_po_or_alternate_mailing_address": "Yes",
+        "ci_alternate_mailing_address": "house number, city, state, and zip code",
+        "ci_landline_number": "(999)-999-9999",
+        "ci_mobile_number": "(999)-999-9999",
+        "ci_email_address": "example@domain.com",
+        "ci_sms_notification": "Yes",
+        "ci_email_notification": "Yes"
+    },
+    "home_and_utility_information": {
+        "haui_type_of_home": "Multi-unit (apartment, condo, duplex, etc.)",
+        "haui_electricity_vendor": "electricity company",
+        "haui_heating_vendor": "heating provider",
+        "haui_own_home_or_rental": "Own",
+        "haui_electricity_included_house_rent": "Yes",
+        "haui_heat_included_house_rent": "Yes",
+        "haui_primary_heating_source": [
+            "Furnace/Heat Pump"
+        ],
+        "haui_heating_system_functional": "Yes",
+        "haui_heating_fuel": [
+            "Electric"
+        ],
+        "haui_secondary_heating_source": "Yes"
+    },
+    "income_and_benefits": {
+        "iab_sources_of_income_received_by_anyone": [
+            "Employment wages"
+        ]
+    },
+    "additional_assistance": {
+        "aa_assistance_received_by_anyone": [
+            "Housing choice voucher (section 8)",
+            "public housing",
+            "permanent supportive housing",
+            "VASH",
+            "SNAP (food stamps) TANF",
+            "child care voucher",
+            "Affordable Care Act subsidy"
+        ],
+        "aa_paid_chil_support": "Yes",
+        "aa_not_working_nor_attending_school": "Yes"
+    },
+    "household_members_demographics": {
+        "hmd_full_name": "Ram",
+        "hmd_dob": "07/30/2024",
+        "hmd_gender": "male",
+        "hmd_race": "A - Asian",
+        "hmd_ethnicity": "H - Hispanic, Latino",
+        "hmd_current_employment_status": "FT - Employed full-time",
+        "hmd_highest_level_of_education": "A - Grades 0-8",
+        "hmd_health_insurance": "Yes",
+        "hmd_current_military_status": "A - Active-duty military",
+        "hmd_add_additional_hm": "No",
+        "hmd_associated_with_the_agency": "Yes",
+        "hmd_type_of_household": "Single person",
+        "additional_member_details": [
+            {
+                "hmd_full_name": "Sham",
+                "hmd_dob": "07-11-2024",
+                "hmd_gender": "Male",
+                "hmd_race": "A - Asian",
+                "hmd_ethnicity": "H - Hispanic, Latino",
+                "hmd_current_employment_status": "FT - Employed full-time",
+                "hmd_highest_level_of_education": "A - Grades 0-8",
+                "hmd_health_insurance": "Yes",
+                "hmd_current_military_status": "A - Active-duty military"
+            },
+            {
+                "hmd_full_name": "Laxman",
+                "hmd_dob": "07-10-2024",
+                "hmd_gender": "Male",
+                "hmd_race": "A - Asian",
+                "hmd_ethnicity": "H - Hispanic, Latino",
+                "hmd_current_employment_status": "FT - Employed full-time",
+                "hmd_highest_level_of_education": "A - Grades 0-8",
+                "hmd_health_insurance": "Yes",
+                "hmd_current_military_status": "A - Active-duty military"
+            }
+        ]
+    },
+    "certification": {
+        "c_statement_for_initials": "statement for initials"
+    },
+    "signature": {
+        "s_signature_of_applicant": "signature of applicant",
+        "s_date_of_signature": "07/30/2024"
+    },
+    "additional_program_referrals": {
+        "apr_up_for_weatherization": "up for weatherization"
+    }
+}
