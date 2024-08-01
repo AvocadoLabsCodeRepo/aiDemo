@@ -6,6 +6,60 @@ var fs = require("fs");
 const liheap_pdfData = require('./liheap_pdfData.json');
 const convert = require('xml-js');
 var moment = require('moment');
+const assistance_received_by_anyone = [
+    {
+        label: 'Housing choice voucher (section 8)',
+        key: 'housing_choice_voucher_section_8'
+    },
+    {
+        label: 'VA Pension',
+        key: 'va_pension'
+    },
+    {
+        label: 'Affordable Care Act subsidy',
+        key: 'affordable_care_act_subsidy'
+    },
+    {
+        label: 'Public housing',
+        key: 'public_housing'
+    },
+    {
+        label: 'TANF',
+        key: 'tanf'
+    },
+    {
+        label: 'Child care voucher',
+        key: 'child_care_voucher'
+    },
+    {
+        label: 'Permanent supportive housing',
+        key: 'permanent_supportive_housing'
+    },
+    {
+        label: 'Earned Income Tax Credit (EITC)',
+        key: 'earned_income_tax_credit_eitc'
+    },
+    {
+        label: 'None',
+        key: 'none'
+    },
+    {
+        label: 'VASH',
+        key: 'vash'
+    },
+    {
+        label: 'WIC',
+        key: 'wic'
+    },
+    {
+        label: 'SNAP (Food Stamps) ',
+        key: 'snap_food_stamps'
+    },
+    {
+        label: 'Child Support',
+        key: 'child_support'
+    }
+]
 
 app.get("/", (req, res) => {
     var html = fs.readFileSync('./application.html', "utf8");
@@ -17,12 +71,27 @@ app.get("/", (req, res) => {
     const bitmap = fs.readFileSync("./pdfLogo.png");
     const logo = bitmap.toString('base64');
 
+    // here create assistance_received_by_anyone mapping for checked and unchecked
+    const assistance_received_by_anyone_values=assistance_received_by_anyone.map(data=>{
+        let o={...data}
+        if(liheap_pdfData.additional_assistance.aa_assistance_received_by_anyone.includes(o.key)){
+            o.checked=true;
+        }else{
+            o.checked=false;
+        }
+        return o;
+
+    });
+    console.log('assistance_received_by_anyone',assistance_received_by_anyone_values);
     let pdfData = {
         logo,
         fontPopins,
         fontRoboto,
         name: 'sudhanshu',
-        data: liheap_pdfData
+        data: {
+            pdfData:liheap_pdfData,
+            assistance_received_by_anyone_values:assistance_received_by_anyone_values
+        }
     }
     var options = {
         childProcessOptions: {
@@ -67,9 +136,9 @@ app.get("/", (req, res) => {
             let liheap_XMLData = Object.entries(liheap_pdfData).reduce((accumulator, [key, value]) => {
                 return { ...accumulator, ...value };
             }, {});
-           
+
             liheap_XMLData = convertJsonArrayToKeys(liheap_XMLData);
-            console.log('liheap_XMLData',liheap_XMLData);
+            console.log('liheap_XMLData', liheap_XMLData);
             let xmlfileData = {
                 "_declaration": { "_attributes": { "version": "1.0", "encoding": "utf-8" } },
                 "DocHeader": { "_attributes": { "CreateDate": currentDate, "CreateTime": currentTime }, "Files": { "FileA": "application.pdf" }, "Fields": { "_attributes": { "Form": "tenant" }, ...liheap_XMLData } }
@@ -99,15 +168,15 @@ function convertJsonArrayToKeys(input) {
                 // Create new dynamic keys
                 if (typeof item === 'object') {
                     for (const chkey in item) {
-                        output[`${chkey}${index+1}`] = item[chkey];
+                        output[`${chkey}${index + 1}`] = item[chkey];
                     }
 
                 } else {
-                    output[`${key}${index+1}`] = item;
+                    output[`${key}${index + 1}`] = item;
                 }
                 //output[`${key}${index}`] = typeof item === 'object' ? item : item;
             });
-        }else{
+        } else {
             output[`${key}`] = value;
         }
     }

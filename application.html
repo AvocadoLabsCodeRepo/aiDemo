@@ -7,11 +7,11 @@
     <style>
         /* src: url('./Roboto-Regular.ttf'); */
         @font-face {
-            font-family: 'Poppins';
-            src: url('./Poppins-Regular.otf');
-            /* src: url('data:font/truetype;charset=utf-8;base64,{{fontPopins}}'); */
+            /* font-family: 'Poppins';;
+           
+          src: url('data:font/truetype;charset=utf-8;base64,{{fontPopins}}');
             font-weight: normal;
-            font-style: normal;
+            font-style: normal; */
             /* font-family: 'Roboto';
             src: url('data:font/truetype;charset=utf-8;base64,{{fontRoboto}}');
             font-weight: normal;
@@ -23,6 +23,7 @@
             background: #DBEAFE;
             /* font-family: 'Roboto'; */
             font-family: 'Poppins';
+            font-weight: bold;
         }
 
         body {
@@ -33,6 +34,7 @@
             background: #DBEAFE;
             /* font-family: 'Roboto'; */
             font-family: 'Poppins';
+            ;
         }
 
         .check-box-container {
@@ -43,7 +45,7 @@
             margin-top: 2px;
             margin-bottom: 1px;
             margin-right: 2px;
-            ;
+            /* margin-left: 2px; */
             /* padding-top:2px; */
             font-size: 7px;
             color: #2563EB;
@@ -137,18 +139,33 @@
             line-height: 120%;
             text-align: center;
             color: #2563EB;
-            font-family: 'Poppins';
+            font-family: 'Poppins' !important;
+            ;
+            /* font-family: 'Roboto'; */
 
 
         }
 
         .pdf-sub-header {
-            font-weight: 500;
+            font-weight: bold;
             font-size: 10px;
             line-height: 16px;
             text-align: center;
             color: #475569;
 
+        }
+
+        .pdf-basic-info-header {
+            background-color: #EFF6FF;
+            background: #EFF6FF;
+            text-align: center;
+            font-size: 8px;
+            line-height: 12px;
+            color: #475571;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            width: 100%;
+            font-weight: bold;
         }
 
         .pdf-section-header {
@@ -161,6 +178,9 @@
             padding-top: 2px;
             padding-bottom: 2px;
             width: 100%;
+            border-radius: 5px 5px 0 0;
+            margin-top: 2px;
+            font-weight: bold;
         }
 
 
@@ -178,8 +198,12 @@
             order: 1;
             flex-grow: 0;
 
-            margin-top: 2px;
+            /* margin-top: 2px; */
 
+        }
+
+        .no-margin {
+            margin: 0px !important;
         }
 
         .row-header {
@@ -189,15 +213,21 @@
             box-sizing: border-box;
             display: flex;
             border: 1px solid #EFF6FF;
-
-
+            display: -webkit-box;
+            display: -webkit-flex;
+            flex-direction: row;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            overflow-wrap: break-word;
             /* height: 25px; */
         }
 
         .row-header-text {
             font-size: 8px;
             line-height: 12px;
-            font-weight: 500;
+            font-weight: bold;
             color: #475571;
             padding-top: 2px;
             padding-bottom: 2px;
@@ -226,7 +256,7 @@
             margin: 0;
             box-sizing: border-box;
             display: flex;
-            border: 1px solid #EFF6FF;
+            /* border: 1px solid #EFF6FF; */
             flex-direction: row;
             align-items: center;
             display: -webkit-box;
@@ -244,19 +274,19 @@
         .row-value-text {
             font-size: 8px;
             line-height: 12px;
-            font-weight: 500;
+            font-weight: bold;
             color: #475571;
             padding-top: 2px;
             padding-bottom: 2px;
             padding-left: 2px;
-            border-top: 1px solid #EFF6FF;
+            /* border-top: 1px solid #EFF6FF; */
             /* display: flex; */
         }
 
         .row-value-text-flex-row {
             font-size: 8px;
             line-height: 12px;
-            font-weight: 500;
+            font-weight: bold;
             color: #475571;
             padding-top: 2px;
             padding-bottom: 2px;
@@ -274,21 +304,8 @@
             flex-wrap: wrap;
         }
 
-        .flex-container {
-            display: flex;
-            flex-direction: row;
-            /* align-items: center; */
-            display: -webkit-box;
-            display: -webkit-flex;
-            -webkit-flex-direction: row;
-            -webkit-flex-wrap: wrap;
-            display: flex;
-            flex-wrap: wrap;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
 
-        }
+
 
         .check-box-container {
             display: -webkit-box;
@@ -302,12 +319,14 @@
             font-size: 7px;
             color: #2563EB;
             line-height: 10.5px;
+            font-weight: bold;
         }
 
         .checkbox-label {
             font-size: 7px;
             color: #AAAAAA;
             line-height: 10.5px;
+            font-weight: bold;
         }
 
 
@@ -374,7 +393,7 @@
     <div class="pdf-container">
         <p class="pdf-title-header">Indiana Energy Assistance Program Application </p>
         <p class="pdf-sub-header">Program Year 2024</p>
-        <div class="flex-container">
+        <div class="flex-container ">
             <div class="row-value-flex-column"
                 style="width:50%;justify-content: center; -webkit-justify-content:center;">
                 <img width="117px" height="29px" style="display: block;margin-left: auto;margin-right: auto;"
@@ -385,10 +404,10 @@
                     Community Development Authority</p>
             </div>
             <div class="row-value-flex-column" style="width:50%">
-                <div class="pdf-section-header">
+                <div class="pdf-basic-info-header">
                     For Provider/Agency Use Only
                 </div>
-                <div class="flex-container">
+                <div class="flex-container no-margin">
                     <div class="row-value-flex-row" style="width:100%">
                         <div class="row-value-text" style="width: 50%;">
                             Date received:
@@ -522,18 +541,18 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 50%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_name}}
+                    {{data.pdfData.contact_information.ci_name}}
                 </div>
 
             </div>
             <div class="row-value-flex-column" style="width: 25%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_ssn}}
+                    {{data.pdfData.contact_information.ci_ssn}}
                 </div>
             </div>
             <div class="row-value-flex-column" style="width: 25%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_county}}
+                    {{data.pdfData.contact_information.ci_county}}
                 </div>
             </div>
         </div>
@@ -564,23 +583,23 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 50%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_physical_address}}
+                    {{data.pdfData.contact_information.ci_physical_address}}
                 </div>
 
             </div>
             <div class="row-value-flex-column" style="width: 16.66%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_state}}
+                    {{data.pdfData.contact_information.ci_state}}
                 </div>
             </div>
             <div class="row-value-flex-column" style="width: 16.66%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information?.ci_city}}
+                    {{data.pdfData.contact_information?.ci_city}}
                 </div>
             </div>
             <div class="row-value-flex-column" style="width: 16.66%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_zip_code}}
+                    {{data.pdfData.contact_information.ci_zip_code}}
                 </div>
             </div>
         </div>
@@ -597,8 +616,8 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 100%;">
                 <div class="row-value-text-flex-row">
-                    {{#ifCond data.contact_information.ci_po_or_alternate_mailing_address "==" 'Yes'}}
-                    {{data.contact_information.ci_alternate_mailing_address}}
+                    {{#ifCond data.pdfData.contact_information.ci_po_or_alternate_mailing_address "==" 'Yes'}}
+                    {{data.pdfData.contact_information.ci_alternate_mailing_address}}
                     {{/ifCond}}
 
                 </div>
@@ -634,7 +653,7 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width: 30%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_landline_number}}
+                    {{data.pdfData.contact_information.ci_landline_number}}
                 </div>
 
                 <div class="row-value-text-flex-row">
@@ -654,15 +673,15 @@
             </div>
             <div class="row-value-flex-column" style="width: 30%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_mobile_number}}
+                    {{data.pdfData.contact_information.ci_mobile_number}}
                 </div>
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
-                        {{#ifCond data.contact_information.ci_sms_notification "==" 'Yes'}}
+                        {{#ifCond data.pdfData.contact_information.ci_sms_notification "==" 'Yes'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked"> Consent to receive texts</span>
                         {{/ifCond}}
-                        {{#ifCond data.contact_information.ci_sms_notification "==" 'No'}}
+                        {{#ifCond data.pdfData.contact_information.ci_sms_notification "==" 'No'}}
                         <input type="checkbox">
                         <span class="checkbox-label"> Consent to receive texts</span>
                         {{/ifCond}}
@@ -672,16 +691,16 @@
             </div>
             <div class="row-value-flex-column" style="width: 40%;">
                 <div class="row-value-text-flex-row">
-                    {{data.contact_information.ci_email_address}}
+                    {{data.pdfData.contact_information.ci_email_address}}
                 </div>
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
-                        {{#ifCond data.contact_information.ci_email_notification "==" 'Yes'}}
+                        {{#ifCond data.pdfData.contact_information.ci_email_notification "==" 'Yes'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked"> Check box to give consent for us to e-mail
                             you.</span>
                         {{/ifCond}}
-                        {{#ifCond data.contact_information.ci_email_notification "==" 'No'}}
+                        {{#ifCond data.pdfData.contact_information.ci_email_notification "==" 'No'}}
                         <input type="checkbox">
                         <span class="checkbox-label"> Check box to give consent for us to e-mail
                             you.</span>
@@ -713,12 +732,14 @@
 
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" 'Site-built single house'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" 'Site-built single
+                        house'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked"> Site-built single house
                         </span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" 'Site-built single house'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" 'Site-built single
+                        house'}}
                         <input type="checkbox">
                         <span class="checkbox-label">Site-built single house
                         </span>
@@ -726,13 +747,15 @@
                         <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" "Multi-unit (apartment,
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" "Multi-unit
+                        (apartment,
                         condo, duplex, etc.)"}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Multi-unit (apartment, condo, duplex, etc.)
                         </span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" "Multi-unit (apartment,
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" "Multi-unit
+                        (apartment,
                         condo, duplex, etc.)"}}
                         <input type="checkbox">
                         <span class="checkbox-label">Multi-unit (apartment, condo, duplex, etc.)
@@ -744,11 +767,11 @@
                         <span class="checkmark"> </span> -->
                     </label>
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" 'Mobile home'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" 'Mobile home'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Mobile home</span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" 'Mobile home'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" 'Mobile home'}}
                         <input type="checkbox">
                         <span class="checkbox-label">Mobile home
                         </span>
@@ -759,11 +782,11 @@
                         <span class="checkmark"> </span> -->
                     </label>
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "==" 'Other'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" 'Other'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Other</span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_type_of_home "!=" 'Other'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" 'Other'}}
                         <input type="checkbox">
                         <span class="checkbox-label">Other
                         </span>
@@ -778,11 +801,11 @@
             <div class="row-value-flex-column" style="width:50%">
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "==" 'Own'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_own_home_or_rental "==" 'Own'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Own</span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "!=" 'Own'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_own_home_or_rental "!=" 'Own'}}
                         <input type="checkbox">
                         <span class="checkbox-label">Own
                         </span>
@@ -793,11 +816,11 @@
                         <span class="checkmark"> </span> -->
                     </label>
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "==" 'Rent'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_own_home_or_rental "==" 'Rent'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Rent</span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "!=" 'Rent'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_own_home_or_rental "!=" 'Rent'}}
                         <input type="checkbox">
                         <span class="checkbox-label">Rent
                         </span>
@@ -805,11 +828,11 @@
                         <span class="checkmark"> </span>
                     </label>
                     <label class="check-box-container">
-                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "==" 'Other'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_own_home_or_rental "==" 'Other'}}
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Other</span>
                         {{/ifCond}}
-                        {{#ifCond data.home_and_utility_information.haui_own_home_or_rental "!=" 'Other'}}
+                        {{#ifCond data.pdfData.home_and_utility_information.haui_own_home_or_rental "!=" 'Other'}}
                         <input type="checkbox">
                         <span class="checkbox-label">Other
                         </span>
@@ -832,17 +855,19 @@
             <div class="row-value-flex-row" style="width: 100%;">
                 <div class="row-value-flex-column" style="width: 50%;">
                     <div class="row-value-text-flex-row">
-                        Electricity Vendor: {{data.home_and_utility_information.haui_electricity_vendor}}
+                        Electricity Vendor: {{data.pdfData.home_and_utility_information.haui_electricity_vendor}}
                     </div>
 
                     <div class="row-value-text-flex-row">
                         <label class="check-box-container">
-                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "=="
+                            {{#ifCond data.pdfData.home_and_utility_information.haui_electricity_included_house_rent
+                            "=="
                             'Yes'}}
                             <input type="checkbox" checked="checked">
                             <span class="checkbox-label-checked">Included in rent</span>
                             {{/ifCond}}
-                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!="
+                            {{#ifCond data.pdfData.home_and_utility_information.haui_electricity_included_house_rent
+                            "!="
                             'Yes'}}
                             <input type="checkbox">
                             <span class="checkbox-label">Included in rent
@@ -859,16 +884,18 @@
                 </div>
                 <div class="row-value-flex-column" style="width: 50%;">
                     <div class="row-value-text-flex-row">
-                        Heating Vendor: {{data.home_and_utility_information.haui_heating_vendor}}
+                        Heating Vendor: {{data.pdfData.home_and_utility_information.haui_heating_vendor}}
                     </div>
 
                     <div class="row-value-text-flex-row">
                         <label class="check-box-container">
-                            {{#ifCond data.home_and_utility_information.haui_heat_included_house_rent "==" 'Yes'}}
+                            {{#ifCond data.pdfData.home_and_utility_information.haui_heat_included_house_rent "=="
+                            'Yes'}}
                             <input type="checkbox" checked="checked">
                             <span class="checkbox-label-checked">Included in rent</span>
                             {{/ifCond}}
-                            {{#ifCond data.home_and_utility_information.haui_electricity_included_house_rent "!="
+                            {{#ifCond data.pdfData.home_and_utility_information.haui_electricity_included_house_rent
+                            "!="
                             'Yes'}}
                             <input type="checkbox">
                             <span class="checkbox-label">Included in rent
@@ -963,8 +990,7 @@
         </div>
         <div class="flex-container">
             <div class="row-value-flex-column" style="width:100%">
-
-                <div class="row-value-text-flex-row">
+                <div class="row-value-text-flex-row" style="width:100%">
                     <label class="check-box-container">
                         <input type="checkbox" checked="checked">
                         <span class="checkbox-label-checked">Yes</span>
@@ -996,27 +1022,34 @@
         </div>
         <div class="flex-container">
             <div class="row-value-flex-column" style="width:100%;height: 80px;">
-
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label>
+                <div class="row-value-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">Furnace/Heat Pump</span>
+                        <span class="checkmark"> </span>
+                    </label>
+                </div>
+                <div class="row-value-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Baseboard/Wall Unit</span>
+                        <span class="checkmark"> </span>
+                    </label>
+                </div>
+                <div class="row-value-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label">Wood Stove</span>
+                        <span class="checkmark"> </span>
+                    </label>
+                </div>
+                <div class="row-value-flex-row">
+                    <label class="check-box-container">
+                        <input type="checkbox">
+                        <span class="checkbox-label"> Other</span>
+                        <span class="checkmark"> </span>
+                    </label>
+                </div>
                 <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Furnace/Heat Pump</span>
@@ -1093,12 +1126,25 @@
         <div class="flex-container">
             <div class="row-value-flex-column" style="width:100%;height: 80px;">
                 <!-- <div class="row-value-text-flex-row"> -->
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
+                {{#each data.assistance_received_by_anyone_values}}
+                <div class="row-value-flex-row">
+                    <label class="check-box-container">
+                        {{#ifCond this.checked "==" true}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">{{this.label}}</span>
+                        {{/ifCond}}
+                        {{#ifCond this.checked "==" false}}
+                        <input type="checkbox">
+                        <span class="checkbox-label"> {{this.label}}</span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
+                        <!-- <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked">{{this.label}}</span>
+                    <span class="checkmark"> </span> -->
+                    </label>
+                </div>
+                {{/each}}
+                <!-- <label class="check-box-container">
                     <input type="checkbox">
                     <span class="checkbox-label">Baseboard/Wall Unit</span>
                     <span class="checkmark"> </span>
@@ -1172,7 +1218,7 @@
                     <input type="checkbox">
                     <span class="checkbox-label"> Other</span>
                     <span class="checkmark"> </span>
-                </label>
+                </label> -->
                 <!-- </div> -->
             </div>
         </div>
@@ -1278,8 +1324,7 @@
             </div>
             <div class="row-header" style="width: 5%">
                 <div class="row-header-text">
-                    Ethnicity
-                </div>
+                    Ethnicity </div>
             </div>
             <div class="row-header" style="width: 5%">
                 <div class="row-header-text">
@@ -1618,37 +1663,32 @@
                 </p>
                 <span class="informative-section-label">
                     A <span class="informative-section-value">
-                        -Asian
+                        - Grades 0-8
                     </span>
                 </span>
                 <span class="informative-section-label">
                     B <span class="informative-section-value">
-                        - Black or African American
+                        - Grades 9-12, Non-graduate
                     </span>
                 </span>
                 <span class="informative-section-label">
-                    I <span class="informative-section-value">
-                        -American Indian or Alaska Native
+                    C <span class="informative-section-value">
+                        - High School Graduate/Equivalency Diploma
                     </span>
                 </span>
                 <span class="informative-section-label">
-                    P <span class="informative-section-value">
-                        -Native Hawaiian or other Pacific Island
+                    D <span class="informative-section-value">
+                        - Some post-secondary school
                     </span>
                 </span>
                 <span class="informative-section-label">
-                    W <span class="informative-section-value">
-                        -White
+                    E <span class="informative-section-value">
+                        - 2- or 4-year college degree
                     </span>
                 </span>
                 <span class="informative-section-label">
-                    M <span class="informative-section-value">
-                        -Multi-race
-                    </span>
-                </span>
-                <span class="informative-section-label">
-                    O <span class="informative-section-value">
-                        -Other
+                    F <span class="informative-section-value">
+                        - Other post-secondary graduate
                     </span>
                 </span>
             </div>
@@ -1659,14 +1699,42 @@
                 </p>
                 <span class="informative-section-label">
                     A <span class="informative-section-value">
-                        -H - Hispanic, Latino,
-                        or Spanish origins
+                        - Medicaid
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    B <span class="informative-section-value">
+                        - Medicare
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    C <span class="informative-section-value">
+                        - State Children's Health Insurance Program
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    D <span class="informative-section-value">
+                        - State Health Insurance for Adults
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    E <span class="informative-section-value">
+                        - Military Health Care
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    F <span class="informative-section-value">
+                        - Direct-Purchase
+                    </span>
+                </span>
+                <span class="informative-section-label">
+                    G <span class="informative-section-value">
+                        - Employment-Based
                     </span>
                 </span>
                 <span class="informative-section-label">
                     N <span class="informative-section-value">
-                        - Not Hispanic, Latino,
-                        or Spanish origins
+                        - None
                     </span>
                 </span>
 
@@ -1676,38 +1744,18 @@
                     Military Codes
                 </p>
                 <span class="informative-section-label">
-                    E <span class="informative-section-value">
-                        Employed full-time
+                    A <span class="informative-section-value">
+                        - Active-duty military
                     </span>
                 </span>
                 <span class="informative-section-label">
-                    PT <span class="informative-section-value">
-                        - Employed part time
+                    V <span class="informative-section-value">
+                        - Veteran
                     </span>
                 </span>
                 <span class="informative-section-label">
-                    R <span class="informative-section-value">
-                        - Retired
-                    </span>
-                </span>
-                <span class="informative-section-label">
-                    US <span class="informative-section-value">
-                        - Unemployed six months or less;
-                    </span>
-                </span>
-                <span class="informative-section-label">
-                    UL <span class="informative-section-value">
-                        - Unemployed longer than six months
-                    </span>
-                </span>
-                <span class="informative-section-label">
-                    NL <span class="informative-section-value">
-                        - Not in labor force
-                    </span>
-                </span>
-                <span class="informative-section-label">
-                    M <span class="informative-section-value">
-                        - Migrant Seasonal farm worker
+                    N <span class="informative-section-value">
+                        - No affiliation
                     </span>
                 </span>
 
@@ -1732,14 +1780,34 @@
         <div class="flex-container">
             <div class="row-value-flex-row" style="width:40%">
                 <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
+                    <label class="check-box-container">
+                        {{#ifCond data.pdfData.household_members_demographics.hmd_associated_with_the_agency "==" 'No'}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked"> No</span>
+                        {{/ifCond}}
+                        {{#ifCond data.pdfData.household_members_demographics.hmd_associated_with_the_agency "!=" 'No'}}
+                        <input type="checkbox">
+                        <span class="checkbox-label">No</span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
+                    </label>
+                    <!-- <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked"> No</span>
-                    <span class="checkmark"> </span>
+                    <span class="checkmark"> </span> -->
                 </label>
                 <label class="check-box-container">
+                    {{#ifCond data.pdfData.household_members_demographics.hmd_associated_with_the_agency "==" 'Yes'}}
+                    <input type="checkbox" checked="checked">
+                    <span class="checkbox-label-checked"> Yes (please list)</span>
+                    {{/ifCond}}
+                    {{#ifCond data.pdfData.household_members_demographics.hmd_associated_with_the_agency "!=" 'Yes'}}
                     <input type="checkbox">
-                    <span class="checkbox-label"> Yes (please list) </span>
+                    <span class="checkbox-label">Yes (please list)</span>
+                    {{/ifCond}}
                     <span class="checkmark"> </span>
+                    <!-- <input type="checkbox">
+                    <span class="checkbox-label"> Yes (please list) </span>
+                    <span class="checkmark"> </span> -->
                 </label>
             </div>
 

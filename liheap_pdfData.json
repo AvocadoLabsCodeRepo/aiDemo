@@ -53,13 +53,11 @@
     },
     "additional_assistance": {
         "aa_assistance_received_by_anyone": [
-            "Housing choice voucher (section 8)",
-            "public housing",
-            "permanent supportive housing",
-            "VASH",
-            "SNAP (food stamps) TANF",
-            "child care voucher",
-            "Affordable Care Act subsidy"
+            "housing_choice_voucher_section_8",
+            "va_pension",
+            "child_care_voucher",
+            "permanent_supportive_housing",
+            "vash"
         ],
         "aa_paid_chil_support": "Yes",
         "aa_not_working_nor_attending_school": "Yes"
