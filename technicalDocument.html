@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation for Dynamic PDF Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Technical Documentation for Dynamic PDF Generation Code</h1>
+
+    <h2>Overview</h2>
+    <p>This document outlines the technical aspects of a Node.js application designed to generate a dynamic PDF based on data received via an API request. The application utilizes libraries such as Express.js for server handling, Puppeteer for PDF generation, and Handlebars for templating.</p>
+
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#module-imports">Module Imports</a></li>
+        <li><a href="#data-structure-definitions">Data Structure Definitions</a></li>
+        <li><a href="#api-endpoint">API Endpoint</a></li>
+        <li><a href="#pdf-generation-process">PDF Generation Process</a></li>
+        <li><a href="#template-compilation">Template Compilation</a></li>
+        <li><a href="#helper-functions">Helper Functions</a></li>
+        <li><a href="#server-configuration">Server Configuration</a></li>
+        <li><a href="#how-to-run-the-application">How to Run the Application</a></li>
+    </ol>
+
+    <h2 id="prerequisites">1. Prerequisites</h2>
+    <ul>
+        <li><strong>Node.js</strong>: Ensure Node.js is installed on your machine.</li>
+        <li><strong>NPM</strong>: Comes with Node.js installation; used for package management.</li>
+        <li><strong>Libraries</strong>: Install the following libraries: 
+            <pre><code>npm install express pdf-creator-node handlebars xml-js moment puppeteer</code></pre>
+        </li>
+    </ul>
+
+    <h2 id="module-imports">2. Module Imports</h2>
+    <p>The code begins by importing necessary modules:</p>
+    <pre><code>
+const express = require("express");
+const pdf = require("pdf-creator-node");
+const fs = require("fs");
+const hbs = require("handlebars");
+const convert = require('xml-js');
+const moment = require('moment');
+const puppeteer = require('puppeteer');
+    </code></pre>
+
+    <h2 id="data-structure-definitions">3. Data Structure Definitions</h2>
+    <p>Several types of data are defined as constant arrays, which can be used for generating options in the PDF:</p>
+    <ul>
+        <li><strong>Home Types</strong></li>
+        <li><strong>Primary Heating Sources</strong></li>
+        <li><strong>Primary Heating Fuels</strong></li>
+        <li><strong>Types of Income Received</strong></li>
+        <li><strong>Household Types</strong></li>
+        <li><strong>Assistance Programs</strong></li>
+    </ul>
+
+    <h2 id="api-endpoint">4. API Endpoint</h2>
+    <p>The application listens on the root path ("/"). A GET request to this endpoint triggers the PDF generation process:</p>
+    <pre><code>app.get("/", handlePDFXML);</code></pre>
+
+    <h2 id="pdf-generation-process">5. PDF Generation Process</h2>
+    <p>The <code>handlePDFXML</code> function uses Puppeteer to generate a PDF:</p>
+    <pre><code>
+async function handlePDFXML(req, res) {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const content = await compile();
+    await page.setContent(content);
+    await page.pdf({
+        path: "applicationNew.pdf",
+        format: 'A4',
+        printBackground: true
+    });
+    await browser.close();
+    console.log('PDF generated successfully!');
+}
+</code></pre>
+<ol>
+    <li>It launches a headless browser.</li>
+    <li>A new page is created.</li>
+    <li>The compiled HTML content (from the template) is set.</li>
+    <li>The PDF is generated and saved to the specified path.</li>
+    </ol>
+    
+    <h2 id="template-compilation">6. Template Compilation</h2>
+    <p>The <code>compile </code> function  reads and processes the Handlebars HTML template, embedding the data specific to the application:</p>
+    <pre><code>
+        async function compile() {
+            const bitmap = fs.readFileSync("./pdfLogo.png");
+            const logo = bitmap.toString('base64');
+        
+            // Map various data arrays to include checked statuses...
+            
+            let pdfData = {
+                logo,
+                name: 'sudhanshu',
+                data: { /* collected data here */ }
+            };
+            
+            const html = fs.readFileSync('./templates/application.html', "utf8");
+            return hbs.compile(html)(pdfData);
+        }
+        
+</code></pre>
+<ul>
+    <li>A logo image is read and converted to base64 for inclusion in the PDF..</li>
+    <li>The primary data of the application is compiled into a single object for rendering into the PDF template.</li>
+    <li>The HTML template is read and compiled with the data object to generate the final HTML content.</li>
+    </ul>
+    
+
+    <h2 id="helper-functions">7. Helper Functions</h2>
+    <p>The <code>convertJsonArrayToKeys  </code> function converts nested JSON arrays into flat key-value pairs for easier handling:</p>
+    <pre><code>
+        function convertJsonArrayToKeys(input) {
+            const output = {};
+            // Process input object and flatten data...
+            return output;
+        }
+        
+</code></pre>
+
+<h2 id="server-configuration">8. Server Configuration</h2>
+    <p>Finally, the Express server is configured to listen on the defined port:</p>
+    <pre><code>
+        app.listen(port, () => {
+            console.log(`Example app listening on port ${port}!`);
+        });
+</code></pre>
+
+<h2 id="how-to-run-the-application">9. How to Run the Application</h2>
+
+<ol>
+    <li><b>Set up the Project: Create a directory for your project and navigate into it. Initialize a Node.js project and install the required dependencies.</b> </li>
+    <li><b>Create Necessary Files:</b>Ensure that you have the liheap_pdfData.json, pdfLogo.png, and a Handlebars template file (`application.html`)</li>
+    <li>The compiled HTML content (from the template) is set.</li>
+    </ol>
+

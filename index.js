@@ -1,14 +1,23 @@
-const express = require("express");
-const app = express();
-const port = 3000;
-var pdf = require("pdf-creator-node");
-var fs = require("fs");
-const liheap_pdfData = require('./liheap_pdfData.json');
-//const hbs = require('./templates/application.hbs');
-const hbs = require("handlebars");
-const convert = require('xml-js');
-var moment = require('moment');
-const puppeteer = require('puppeteer');
+// Import required Node.js modules and external dependencies
+const express = require("express");  // Express.js web application framework
+const app = express();  // Create instance of Express application
+const port = 3000;  // Define server port number
+
+// Import PDF generation and file handling libraries
+var pdf = require("pdf-creator-node");  // Library for creating PDF documents
+var fs = require("fs");  // Node.js file system module for file operations
+const liheap_pdfData = require('./liheap_pdfData.json');  // Import LIHEAP application data from JSON file
+//const hbs = require('./templates/application.hbs');  // Commented out handlebars template import
+const hbs = require("handlebars");  // Template engine for generating HTML
+const convert = require('xml-js');  // Library for converting between XML and JSON
+var moment = require('moment');  // Date and time manipulation library
+const puppeteer = require('puppeteer');  // Headless Chrome browser for PDF generation
+
+/**
+ * Define types of homes available for selection
+ * Used in the housing section of the LIHEAP application
+ * @constant {Array<Object>}
+ */
 
 const home_type=[
     {
@@ -28,6 +37,11 @@ const home_type=[
         key: 'other'
     },
 ]
+/**
+ * Define types of primary heating sources
+ * Used in the utility information section
+ * @constant {Array<Object>}
+ */
 const primary_heating_source=[
     {
         label: 'Furnace/Heat Pump',
@@ -47,6 +61,11 @@ const primary_heating_source=[
     },
     
 ];
+/**
+ * Define types of primary heating fuels
+ * Used in the utility information section
+ * @constant {Array<Object>}
+ */
 const primary_heating_fuel=[
     {
         label: 'Electric',
@@ -74,6 +93,11 @@ const primary_heating_fuel=[
     },
     
 ];
+/**
+ * Define types of income sources
+ * Used in the income and benefits section
+ * @constant {Array<Object>}
+ */
 
 const type_of_income_recieved=[
     {
@@ -135,6 +159,11 @@ const type_of_income_recieved=[
     },
   
 ]
+/**
+ * Define types of households
+ * Used in the household demographics section
+ * @constant {Array<Object>}
+ */
 const household_type=[
     {
         label: 'Single person',
@@ -165,6 +194,11 @@ const household_type=[
         key: 'single_male_parent'
     },
 ]
+/**
+ * Define types of assistance programs
+ * Used in the additional assistance section
+ * @constant {Array<Object>}
+ */
 const assistance_received_by_anyone = [
     {
         label: 'Housing choice voucher (section 8)',
@@ -219,27 +253,57 @@ const assistance_received_by_anyone = [
         key: 'child_support'
     }
 ];
+
+/**
+ * Route handler for root path
+ * Initiates PDF generation process
+ */
 app.get("/", handlePDFXML);
 
+/**
+ * Handles the PDF generation process using Puppeteer
+ * @async
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 async function handlePDFXML(req, res) {
+    // Initialize headless browser
     const browser = await puppeteer.launch();
+    
+    // Create new page in browser
     const page = await browser.newPage();
+    
+    // Get compiled HTML content
     const content = await compile();
+    
+    // Set HTML content to page
     await page.setContent(content);
+    
+    // Generate PDF file
     await page.pdf({
-        path: "applicationNew.pdf",
-        format: 'A4', // PDF format
-        printBackground: true // Print background graphics
+        path: "applicationNew.pdf",  // Output file path
+        format: 'A4',               // Page format
+        printBackground: true       // Include background graphics
     });
 
-    // Close the browser
+    // Close browser instance
     await browser.close();
+    
+    // Log success message
     console.log('PDF generated successfully!');
 }
 
+/**
+ * Compiles HTML template with application data
+ * @async
+ * @returns {Promise<string>} Compiled HTML content
+ */
 async function compile() {
+    // Read and convert logo to base64
     const bitmap = fs.readFileSync("./pdfLogo.png");
     const logo = bitmap.toString('base64');
+    
+    // Map assistance data with checked status
     const assistance_received_by_anyone_values = assistance_received_by_anyone.map(data => {
         let o = { ...data }
         if (liheap_pdfData.additional_assistance.aa_assistance_received_by_anyone.includes(o.key)) {
@@ -249,6 +313,8 @@ async function compile() {
         }
         return o;
     });
+    
+    // Map household type data with checked status
     const household_type_values = household_type.map(data => {
         let o = { ...data }
         if (liheap_pdfData.household_members_demographics.hmd_type_of_household==o.key) {
@@ -258,6 +324,8 @@ async function compile() {
         }
         return o;
     });
+    
+    // Map income type data with checked status
     const type_of_income_recieved_values = type_of_income_recieved.map(data => {
         let o = { ...data }
         if (liheap_pdfData.income_and_benefits.iab_sources_of_income_received_by_anyone.includes(o.key)) {
@@ -267,6 +335,8 @@ async function compile() {
         }
         return o;
     });
+    
+    // Map home type data with checked status
     const home_type_values = home_type.map(data => {
         let o = { ...data }
         if (liheap_pdfData.home_and_utility_information.haui_type_of_home==o.key) {
@@ -277,7 +347,7 @@ async function compile() {
         return o;
     });
     
-
+    // Map heating source data with checked status
     const primary_heating_source_values = primary_heating_source.map(data => {
         let o = { ...data }
         if (liheap_pdfData.home_and_utility_information.haui_primary_heating_source.includes(o.key)) {
@@ -287,6 +357,8 @@ async function compile() {
         }
         return o;
     });
+    
+    // Map heating fuel data with checked status
     const primary_heating_fuel_values = primary_heating_fuel.map(data => {
         let o = { ...data }
         if (liheap_pdfData.home_and_utility_information.haui_heating_fuel.includes(o.key)) {
@@ -297,52 +369,62 @@ async function compile() {
         return o;
     });
     
-
+    // Prepare data object for template
     let pdfData = {
-        logo,
-        name: 'sudhanshu',
-        data: {
+        logo,                    // Base64 encoded logo
+        name: 'sudhanshu',       // Applicant name
+        data: {                  // Combined form data
             pdfData: liheap_pdfData,
-            assistance_received_by_anyone_values: assistance_received_by_anyone_values,
-            household_type_values:household_type_values,
+            assistance_received_by_anyone_values,
+            household_type_values,
             type_of_income_recieved_values,
             home_type_values,
             primary_heating_source_values,
             primary_heating_fuel_values
         }
     }
+    
+    // Read HTML template file
     const html = fs.readFileSync('./templates/application.html', "utf8");
-    // const html= await fs.readFile(filePath,'utf8');
+    
+    // Compile template with data and return
     return hbs.compile(html)(pdfData);
 }
+
+/**
+ * Converts JSON arrays to flat key-value pairs
+ * @param {Object} input - Input JSON object
+ * @returns {Object} Flattened key-value pairs
+ */
 function convertJsonArrayToKeys(input) {
     const output = {};
 
-    // Iterate over each key in the input JSON
+    // Iterate through input object
     for (const key in input) {
         const value = input[key];
 
-        // Check if the value is an array
+        // Handle array values
         if (Array.isArray(value)) {
             value.forEach((item, index) => {
-                // Create new dynamic keys
+                // Create dynamic keys for nested objects
                 if (typeof item === 'object') {
                     for (const chkey in item) {
                         output[`${chkey}${index + 1}`] = item[chkey];
                     }
-
                 } else {
+                    // Create dynamic keys for simple values
                     output[`${key}${index + 1}`] = item;
                 }
-                //output[`${key}${index}`] = typeof item === 'object' ? item : item;
             });
         } else {
+            // Copy non-array values directly
             output[`${key}`] = value;
         }
     }
     return output;
 }
 
+// Start Express server
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);
 });
