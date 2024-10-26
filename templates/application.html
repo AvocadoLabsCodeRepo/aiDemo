@@ -717,70 +717,21 @@
             <div class="row-value-flex-column" style="width: 50%;">
 
                 <div class="row-value-text-flex-row">
-                    <label class="check-box-container">
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" 'Site-built single
-                        house'}}
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked"> Site-built single house
-                        </span>
-                        {{/ifCond}}
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" 'Site-built single
-                        house'}}
-                        <input type="checkbox">
-                        <span class="checkbox-label">Site-built single house
-                        </span>
-                        {{/ifCond}}
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" "Multi-unit
-                        (apartment,
-                        condo, duplex, etc.)"}}
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Multi-unit (apartment, condo, duplex, etc.)
-                        </span>
-                        {{/ifCond}}
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" "Multi-unit
-                        (apartment,
-                        condo, duplex, etc.)"}}
-                        <input type="checkbox">
-                        <span class="checkbox-label">Multi-unit (apartment, condo, duplex, etc.)
-                        </span>
-                        {{/ifCond}}
-                        <span class="checkmark"> </span>
-                        <!-- <input type="checkbox">
-                        <span class="checkbox-label"> Multi-unit (apartment, condo, duplex, etc.)</span>
-                        <span class="checkmark"> </span> -->
-                    </label>
-                    <label class="check-box-container">
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" 'Mobile home'}}
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Mobile home</span>
-                        {{/ifCond}}
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" 'Mobile home'}}
-                        <input type="checkbox">
-                        <span class="checkbox-label">Mobile home
-                        </span>
-                        {{/ifCond}}
-                        <span class="checkmark">
-                            <!-- <input type="checkbox">
-                        <span class="checkbox-label"> Mobile home</span>
-                        <span class="checkmark"> </span> -->
-                    </label>
-                    <label class="check-box-container">
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "==" 'Other'}}
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Other</span>
-                        {{/ifCond}}
-                        {{#ifCond data.pdfData.home_and_utility_information.haui_type_of_home "!=" 'Other'}}
-                        <input type="checkbox">
-                        <span class="checkbox-label">Other
-                        </span>
-                        {{/ifCond}}
-                        <span class="checkmark">
-
-                    </label>
-
+                    {{#each data.home_type_values}}
+                    <div class="row-value-flex-row">
+                        <label class="check-box-container">
+                            {{#ifCond this.checked "==" true}}
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked">{{this.label}}</span>
+                            {{/ifCond}}
+                            {{#ifCond this.checked "==" false}}
+                            <input type="checkbox">
+                            <span class="checkbox-label"> {{this.label}}</span>
+                            {{/ifCond}}
+                            <span class="checkmark"> </span>
+                        </label>
+                    </div>
+                    {{/each}}
                 </div>
 
             </div>
@@ -797,9 +748,6 @@
                         </span>
                         {{/ifCond}}
                         <span class="checkmark">
-                            <!-- <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Own</span>
-                        <span class="checkmark"> </span> -->
                     </label>
                     <label class="check-box-container">
                         {{#ifCond data.pdfData.home_and_utility_information.haui_own_home_or_rental "==" 'Rent'}}
@@ -860,9 +808,6 @@
                             </span>
                             {{/ifCond}}
                             <span class="checkmark"> </span>
-                            <!-- <input type="checkbox" checked="checked">
-                            <span class="checkbox-label-checked"> Included in rent</span>
-                            <span class="checkmark"> </span> -->
                         </label>
                     </div>
 
@@ -888,9 +833,6 @@
                             </span>
                             {{/ifCond}}
                             <span class="checkmark"> </span>
-                            <!-- <input type="checkbox">
-                            <span class="checkbox-label"> Included in rent</span>
-                            <span class="checkmark"> </span> -->
                         </label>
                     </div>
                 </div>
@@ -913,54 +855,42 @@
             <div class="row-value-flex-column" style="width:50%">
 
                 <div class="row-value-text-flex-row">
-                    <label class="check-box-container">
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label">Baseboard/Wall Unit</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label">Wood Stove</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label"> Other</span>
-                        <span class="checkmark"> </span>
-                    </label>
-
+                    {{#each data.primary_heating_source_values}}
+                    <div class="row-value-flex-row">
+                        <label class="check-box-container">
+                            {{#ifCond this.checked "==" true}}
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked">{{this.label}}</span>
+                            {{/ifCond}}
+                            {{#ifCond this.checked "==" false}}
+                            <input type="checkbox">
+                            <span class="checkbox-label"> {{this.label}}</span>
+                            {{/ifCond}}
+                            <span class="checkmark"> </span>
+                        </label>
+                    </div>
+                    {{/each}}
                 </div>
 
             </div>
             <div class="row-value-flex-column" style="width: 50%">
 
                 <div class="row-value-text-flex-row">
-                    <label class="check-box-container">
-                        <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label">Baseboard/Wall Unit</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label">Wood Stove</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label"> Other</span>
-                        <span class="checkmark"> </span>
-                    </label>
-
+                    {{#each data.primary_heating_fuel_values}}
+                    <div class="row-value-flex-row">
+                        <label class="check-box-container">
+                            {{#ifCond this.checked "==" true}}
+                            <input type="checkbox" checked="checked">
+                            <span class="checkbox-label-checked">{{this.label}}</span>
+                            {{/ifCond}}
+                            {{#ifCond this.checked "==" false}}
+                            <input type="checkbox">
+                            <span class="checkbox-label"> {{this.label}}</span>
+                            {{/ifCond}}
+                            <span class="checkmark"> </span>
+                        </label>
+                    </div>
+                    {{/each}}
                 </div>
 
             </div>
@@ -1008,95 +938,23 @@
         </div>
         <div class="flex-container">
             <div class="row-value-flex-column" style="width:100%;height: 80px;">
+                {{#each data.type_of_income_recieved_values}}
                 <div class="row-value-flex-row">
                     <label class="check-box-container">
+                        {{#ifCond this.checked "==" true}}
                         <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                </div>
-                <div class="row-value-flex-row">
-                    <label class="check-box-container">
+                        <span class="checkbox-label-checked">{{this.label}}</span>
+                        {{/ifCond}}
+                        {{#ifCond this.checked "==" false}}
                         <input type="checkbox">
-                        <span class="checkbox-label">Baseboard/Wall Unit</span>
+                        <span class="checkbox-label"> {{this.label}}</span>
+                        {{/ifCond}}
                         <span class="checkmark"> </span>
                     </label>
                 </div>
-                <div class="row-value-flex-row">
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label">Wood Stove</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                </div>
-                <div class="row-value-flex-row">
-                    <label class="check-box-container">
-                        <input type="checkbox">
-                        <span class="checkbox-label"> Other</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                </div>
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label>
-
+                {{/each}}
+                
+    
             </div>
         </div>
         <div class="flex-container">
@@ -1111,7 +969,6 @@
         </div>
         <div class="flex-container">
             <div class="row-value-flex-column" style="width:100%;height: 80px;">
-                <!-- <div class="row-value-text-flex-row"> -->
                 {{#each data.assistance_received_by_anyone_values}}
                 <div class="row-value-flex-row">
                     <label class="check-box-container">
@@ -1124,88 +981,10 @@
                         <span class="checkbox-label"> {{this.label}}</span>
                         {{/ifCond}}
                         <span class="checkmark"> </span>
-                        <!-- <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">{{this.label}}</span>
-                    <span class="checkmark"> </span> -->
                     </label>
                 </div>
                 {{/each}}
-                <!-- <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkbox-label-checked">Furnace/Heat Pump</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Baseboard/Wall Unit</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label">Wood Stove</span>
-                    <span class="checkmark"> </span>
-                </label>
-                <label class="check-box-container">
-                    <input type="checkbox">
-                    <span class="checkbox-label"> Other</span>
-                    <span class="checkmark"> </span>
-                </label> -->
-                <!-- </div> -->
+
             </div>
         </div>
         <div class="flex-container">
@@ -1226,30 +1005,31 @@
             <div class="row-value-flex-column" style="width:50%">
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
+                        {{#ifCond data.pdfData.additional_assistance.aa_paid_child_support "==" 'Yes'}}
                         <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Yes (please submit proof of
+                        <span class="checkbox-label-checked"> Yes (please submit proof of
                             payments)</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
+                        {{/ifCond}}
+                        {{#ifCond data.pdfData.additional_assistance.aa_paid_child_support "==" 'No'}}
                         <input type="checkbox">
-                        <span class="checkbox-label">No</span>
+                        <span class="checkbox-label"> No</span>
+                        {{/ifCond}}
                         <span class="checkmark"> </span>
                     </label>
-
                 </div>
             </div>
             <div class="row-value-flex-column" style="width:50%">
                 <div class="row-value-text-flex-row">
                     <label class="check-box-container">
+                        {{#ifCond data.pdfData.additional_assistance.aa_not_working_nor_attending_school "==" 'Yes'}}
                         <input type="checkbox" checked="checked">
-                        <span class="checkbox-label-checked">Yes (please submit proof of
+                        <span class="checkbox-label-checked"> Yes (please submit proof of
                             payments)</span>
-                        <span class="checkmark"> </span>
-                    </label>
-                    <label class="check-box-container">
+                        {{/ifCond}}
+                        {{#ifCond data.pdfData.additional_assistance.aa_not_working_nor_attending_school "==" 'No'}}
                         <input type="checkbox">
-                        <span class="checkbox-label">No</span>
+                        <span class="checkbox-label"> No</span>
+                        {{/ifCond}}
                         <span class="checkmark"> </span>
                     </label>
                 </div>
@@ -1324,14 +1104,12 @@
             </div>
             <div class="row-header" style="width: 5%">
                 <div class="row-header-text">
-                    Health
-                    Insurance
+                    Health Insurance
                 </div>
             </div>
             <div class="row-header" style="width: 5%">
                 <div class="row-header-text">
-                    Military
-                    Status
+                    Military Status
                 </div>
             </div>
         </div>
@@ -1343,7 +1121,7 @@
             </div>
             <div class="row-value-flex-row" style="width: 20%">
                 <div class="row-value-text">
-                    Williamson
+                    {{data.pdfData.household_members_demographics.hmd_full_name}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 20%">
@@ -1358,12 +1136,12 @@
             </div>
             <div class="row-value-flex-row" style="width: 7%">
                 <div class="row-value-text">
-                    01/24/1960
+                    {{data.pdfData.household_members_demographics.hmd_dob}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 8%">
                 <div class="row-value-text">
-                    Male
+                    {{data.pdfData.household_members_demographics.hmd_gender}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
@@ -1373,37 +1151,40 @@
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    O
+                    {{data.pdfData.household_members_demographics.hmd_race}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    N
+                    {{data.pdfData.household_members_demographics.hmd_ethnicity}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    PT
+                    {{data.pdfData.household_members_demographics.hmd_current_employment_status}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    C
+                    {{data.pdfData.household_members_demographics.hmd_highest_level_of_education}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    D
+                    {{data.pdfData.household_members_demographics.hmd_health_insurance}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    V
+                    {{data.pdfData.household_members_demographics.hmd_current_military_status}}
+                    
                 </div>
             </div>
 
         </div>
+        {{#each data.pdfData.household_members_demographics.additional_member_details}}
         <div class="flex-container">
+           
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
                     2
@@ -1411,7 +1192,7 @@
             </div>
             <div class="row-value-flex-row" style="width: 20%">
                 <div class="row-value-text">
-                    Williamson
+                    {{this.hmd_full_name}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 20%">
@@ -1426,12 +1207,12 @@
             </div>
             <div class="row-value-flex-row" style="width: 7%">
                 <div class="row-value-text">
-                    01/24/1960
+                    {{this.hmd_dob}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 8%">
                 <div class="row-value-text">
-                    Male
+                    {{this.hmd_gender}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
@@ -1441,105 +1222,37 @@
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    O
+                    {{this.hmd_race}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    N
+                    {{this.hmd_ethnicity}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    PT
+                    {{this.hmd_current_employment_status}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    C
+                    {{this.hmd_highest_level_of_education}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    D
+                    {{this.hmd_health_insurance}}
                 </div>
             </div>
             <div class="row-value-flex-row" style="width: 5%">
                 <div class="row-value-text">
-                    V
+                    {{this.hmd_current_military_status}}
+                    
                 </div>
             </div>
-
         </div>
-
-        <div class="flex-container">
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    3
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 20%">
-                <div class="row-value-text">
-                    Williamson
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 20%">
-                <div class="row-value-text">
-                    Cameron
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    M.I.
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 7%">
-                <div class="row-value-text">
-                    01/24/1960
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 8%">
-                <div class="row-value-text">
-                    Male
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    Yes
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    O
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    N
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    PT
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    C
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    D
-                </div>
-            </div>
-            <div class="row-value-flex-row" style="width: 5%">
-                <div class="row-value-text">
-                    V
-                </div>
-            </div>
-
-        </div>
+        {{/each}}
         <div class="flex-container">
             <div class="informative-section-container" style="width: 30%;">
                 <p class="informative-section-header">
@@ -1749,6 +1462,11 @@
             </div>
         </div>
         <div class="flex-container">
+            <div class="row-header" style="width: 60%;">
+                <div class="row-header-text">
+                    Household Type (please check one)
+                </div>
+            </div>
             <div class="row-header" style="width: 40%;">
                 <div class="row-header-text">
                     Is anybody in the household affiliated with this agency as an employee/staff member, board member,
@@ -1756,11 +1474,8 @@
                     subcrontractor, or related to any such member?
                 </div>
             </div>
-            <div class="row-header" style="width: 60%;">
-                <div class="row-header-text">
-                    Household Type (please check one)
-                </div>
-            </div>
+
+
 
         </div>
         <div class="flex-container">
@@ -1791,7 +1506,22 @@
                 </label>
             </div>
             <div class="row-value-flex-column" style="width:60%;height: 70px;">
-                <label class="check-box-container">
+                {{#each data.household_type_values}}
+                <div class="row-value-flex-row">
+                    <label class="check-box-container">
+                        {{#ifCond this.checked "==" true}}
+                        <input type="checkbox" checked="checked">
+                        <span class="checkbox-label-checked">{{this.label}}</span>
+                        {{/ifCond}}
+                        {{#ifCond this.checked "==" false}}
+                        <input type="checkbox">
+                        <span class="checkbox-label"> {{this.label}}</span>
+                        {{/ifCond}}
+                        <span class="checkmark"> </span>
+                    </label>
+                </div>
+                {{/each}}
+                <!-- <label class="check-box-container">
                     <input type="checkbox" checked="checked">
                     <span class="checkbox-label-checked">Single Person</span>
                     <span class="checkmark"> </span>
@@ -1830,7 +1560,7 @@
                     <input type="checkbox">
                     <span class="checkbox-label">Other</span>
                     <span class="checkmark"> </span>
-                </label>
+                </label> -->
             </div>
 
         </div>

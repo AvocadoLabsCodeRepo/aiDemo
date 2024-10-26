@@ -9,6 +9,162 @@ const hbs = require("handlebars");
 const convert = require('xml-js');
 var moment = require('moment');
 const puppeteer = require('puppeteer');
+
+const home_type=[
+    {
+        label: 'Site-built single house',
+        key: 'site_built_single_house'
+    },
+    {
+        label: 'Multi-unit (apartment, condo, duplex, etc.)',
+        key: 'multi_unit_apartment'
+    },
+    {
+        label: 'Mobile home',
+        key: 'mobile_home'
+    },
+    {
+        label: 'Other',
+        key: 'other'
+    },
+]
+const primary_heating_source=[
+    {
+        label: 'Furnace/Heat Pump',
+        key: 'furnace_heat_pump'
+    },
+    {
+        label: 'Baseboard/wall',
+        key: 'baseboard_wall'
+    },
+    {
+        label: 'Wood Stove',
+        key: 'wood_stove'
+    },
+    {
+        label: 'Other',
+        key: 'other'
+    },
+    
+];
+const primary_heating_fuel=[
+    {
+        label: 'Electric',
+        key: 'electric'
+    },
+    {
+        label: 'Fuel Oil',
+        key: 'fuel_oil'
+    },
+    {
+        label: 'Natural Gas',
+        key: 'natural_gas'
+    },
+    {
+        label: 'Wood/Pellets',
+        key: 'wood_pellets'
+    },
+    {
+        label: 'Propane',
+        key: 'propane'
+    },
+    {
+        label: 'Other',
+        key: 'other'
+    },
+    
+];
+
+const type_of_income_recieved=[
+    {
+        label: 'Employment wages',
+        key: 'employment_wages'
+    },
+    {
+        label: 'Pension/Retirement',
+        key: 'pension_retirement'
+    },
+    {
+        label: 'Workers Compensation',
+        key: 'workers_compensation'
+    },
+    {
+        label: 'Social Security Disability',
+        key: 'social_security_disability'
+    },
+    {
+        label: 'VA Pension',
+        key: 'va_pension'
+    },
+    {
+        label: 'Private Disability',
+        key: 'private_disability'
+    },
+    {
+        label: 'Social Security Retirement',
+        key: 'social_security_retirement'
+    },
+    {
+        label: 'Unemployment Benefits',
+        key: 'unemployment_benefits'
+    },
+    {
+        label: 'Odd jobs/irregular income',
+        key: 'odd_jobs_irregular_income'
+    },
+    {
+        label: 'Self-employment',
+        key: 'self_employment'
+    },
+    {
+        label: 'Alimony/Spousal Support',
+        key: 'alimony_spousal_support'
+    },
+    {
+        label: 'No income',
+        key: 'no_income'
+    },
+
+    {
+        label: 'VA Disability',
+        key: 'va_disability'
+    },
+    {
+        label: 'SSI',
+        key: 'ssi'
+    },
+  
+]
+const household_type=[
+    {
+        label: 'Single person',
+        key: 'single_person'
+    },
+    {
+        label: 'Two-parent household',
+        key: 'two_parent_household'
+    },
+    {
+        label: 'Multi-generational household (3+ generations)',
+        key: 'multi_generational_household_3_generations'
+    },
+    {
+        label: 'Two adults no children ',
+        key: 'two_adults_no_children'
+    },
+    {
+        label: 'Non-related adults with children',
+        key: 'non_related_adults_with_children'
+    },
+    {
+        label: 'Single female parent',
+        key: 'single_female_parent'
+    },
+    {
+        label: 'Single male parent',
+        key: 'single_male_parent'
+    },
+]
 const assistance_received_by_anyone = [
     {
         label: 'Housing choice voucher (section 8)',
@@ -65,102 +221,22 @@ const assistance_received_by_anyone = [
 ];
 app.get("/", handlePDFXML);
 
-// app.get("/", (req, res) => {
-//     var html = fs.readFileSync('./application.html', "utf8");
-//     // fontPath = fs.readFileSync('./Poppins-Regular.ttf');
-//     fontPath = fs.readFileSync('./Poppins-Regular.otf');
-//     const fontPopins = fontPath.toString('base64');
-//     fontPath = fs.readFileSync('./Roboto-Regular.ttf');
-//     const fontRoboto = fontPath.toString('base64');
-//     const bitmap = fs.readFileSync("./pdfLogo.png");
-//     const logo = bitmap.toString('base64');
+async function handlePDFXML(req, res) {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const content = await compile();
+    await page.setContent(content);
+    await page.pdf({
+        path: "applicationNew.pdf",
+        format: 'A4', // PDF format
+        printBackground: true // Print background graphics
+    });
 
-//     // here create assistance_received_by_anyone mapping for checked and unchecked
-//     const assistance_received_by_anyone_values = assistance_received_by_anyone.map(data => {
-//         let o = { ...data }
-//         if (liheap_pdfData.additional_assistance.aa_assistance_received_by_anyone.includes(o.key)) {
-//             o.checked = true;
-//         } else {
-//             o.checked = false;
-//         }
-//         return o;
+    // Close the browser
+    await browser.close();
+    console.log('PDF generated successfully!');
+}
 
-//     });
-//     console.log('assistance_received_by_anyone', assistance_received_by_anyone_values);
-//     let pdfData = {
-//         logo,
-//         fontPopins,
-//         fontRoboto,
-//         name: 'sudhanshu',
-//         data: {
-//             pdfData: liheap_pdfData,
-//             assistance_received_by_anyone_values: assistance_received_by_anyone_values
-//         }
-//     }
-//     var options = {
-//         childProcessOptions: {
-//             env: {
-//                 OPENSSL_CONF: '/dev/null',
-//             },
-//         },
-//         format: "A4",
-//         orientation: "portrait",
-//         header: {
-//             height: "5px",
-//             contents: {
-//                 default: '<div style=" background-color: #DBEAFE;margin-top:-5px;"></div>',
-//             }
-//         },
-//         footer: {
-//             height: "30px",
-//             contents: {
-//                 first: '<div style="background-color: #DBEAFE; margin-bottom:-10px; font-size: 8px;font-weight: 500;line-height: 16px;text-align: center;color:#475569">Please complete and sign page 2 - Application is not valid without signature and date. Use blue or black ink only and be sure to fully complete all fields. Failure to fully complete application may delay processing</div>',
-//             }
-//         }
-//     };
-//     var document = {
-//         html: html,
-//         data: pdfData,
-
-//         // path: "/home/ec2-user/indyrent-node/files/" + applicationId + ".pdf",
-//         path: "./application.pdf",
-//         //   path: "./"+applicationId+".pdf",
-//         type: "",
-//     };
-
-//     return pdf
-//         .create(document, options)
-//         .then((response) => {
-//             console.log('res.filename', res.filename);
-//             let currentDate = moment().format('YYYYMMDD');
-//             let currentTime = moment().unix();
-//             // res.send("Hello World!");
-//             //format the arrays to string
-
-//             //remove the nested data
-//             let liheap_XMLData = Object.entries(liheap_pdfData).reduce((accumulator, [key, value]) => {
-//                 return { ...accumulator, ...value };
-//             }, {});
-
-//             liheap_XMLData = convertJsonArrayToKeys(liheap_XMLData);
-//             console.log('liheap_XMLData', liheap_XMLData);
-//             let xmlfileData = {
-//                 "_declaration": { "_attributes": { "version": "1.0", "encoding": "utf-8" } },
-//                 "DocHeader": { "_attributes": { "CreateDate": currentDate, "CreateTime": currentTime }, "Files": { "FileA": "application.pdf" }, "Fields": { "_attributes": { "Form": "tenant" }, ...liheap_XMLData } }
-//             };
-//             const json = JSON.stringify(xmlfileData);
-//             const agencyXML = convert.json2xml(json, { compact: true, spaces: 1 });
-//             fs.writeFileSync("./application.xml", agencyXML, function (err) {
-//                 if (err) throw err;
-//             });
-//         })
-//         .catch((error) => {
-//             console.log('came in exception bro', __dirname)
-//             console.error(error);
-//         });
-
-
-// });
 async function compile() {
     const bitmap = fs.readFileSync("./pdfLogo.png");
     const logo = bitmap.toString('base64');
@@ -173,51 +249,71 @@ async function compile() {
         }
         return o;
     });
+    const household_type_values = household_type.map(data => {
+        let o = { ...data }
+        if (liheap_pdfData.household_members_demographics.hmd_type_of_household==o.key) {
+            o.checked = true;
+        } else {
+            o.checked = false;
+        }
+        return o;
+    });
+    const type_of_income_recieved_values = type_of_income_recieved.map(data => {
+        let o = { ...data }
+        if (liheap_pdfData.income_and_benefits.iab_sources_of_income_received_by_anyone.includes(o.key)) {
+            o.checked = true;
+        } else {
+            o.checked = false;
+        }
+        return o;
+    });
+    const home_type_values = home_type.map(data => {
+        let o = { ...data }
+        if (liheap_pdfData.home_and_utility_information.haui_type_of_home==o.key) {
+            o.checked = true;
+        } else {
+            o.checked = false;
+        }
+        return o;
+    });
+    
+
+    const primary_heating_source_values = primary_heating_source.map(data => {
+        let o = { ...data }
+        if (liheap_pdfData.home_and_utility_information.haui_primary_heating_source.includes(o.key)) {
+            o.checked = true;
+        } else {
+            o.checked = false;
+        }
+        return o;
+    });
+    const primary_heating_fuel_values = primary_heating_fuel.map(data => {
+        let o = { ...data }
+        if (liheap_pdfData.home_and_utility_information.haui_heating_fuel.includes(o.key)) {
+            o.checked = true;
+        } else {
+            o.checked = false;
+        }
+        return o;
+    });
+    
+
     let pdfData = {
         logo,
         name: 'sudhanshu',
         data: {
             pdfData: liheap_pdfData,
-            assistance_received_by_anyone_values: assistance_received_by_anyone_values
+            assistance_received_by_anyone_values: assistance_received_by_anyone_values,
+            household_type_values:household_type_values,
+            type_of_income_recieved_values,
+            home_type_values,
+            primary_heating_source_values,
+            primary_heating_fuel_values
         }
     }
-    const html = fs.readFileSync('./templates/application.hbs', "utf8");
+    const html = fs.readFileSync('./templates/application.html', "utf8");
     // const html= await fs.readFile(filePath,'utf8');
     return hbs.compile(html)(pdfData);
-}
-async function handlePDFXML(req, res) {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    const content = await compile();
-    //     const content = `
-    //         <html>
-    //         <link rel="preconnect" href="https://fonts.googleapis.com">
-    // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    // <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans&display=swap" rel="stylesheet">
-    //             <head>
-    //                 <title>Dynamic PDF</title>
-    //                 <style>
-    //                     body { font-family: 'Poppins'; }
-    //                     h1 { color: #4CAF50; }
-    //                     p { font-size: 14px; }
-    //                 </style>
-    //             </head>
-    //             <body>
-    //                 <h1>Hello, this is a dynamic PDF!</h1>
-    //                 <p>This PDF was generated using Puppeteer.</p>
-    //             </body>
-    //         </html>
-    //     `;
-    await page.setContent(content);
-    await page.pdf({
-        path: "applicationNew.pdf",
-        format: 'A4', // PDF format
-        printBackground: true // Print background graphics
-    });
-
-    // Close the browser
-    await browser.close();
-    console.log('PDF generated successfully!');
 }
 function convertJsonArrayToKeys(input) {
     const output = {};

@@ -10,7 +10,6 @@
         "household_has_de_notice":"Yes",
         "household_heat_source_inoperable":"Yes",
         "electricity_or_heating_disconnected":"Yes"
-
     },    
     "contact_information": {
         "ci_name": "as",
@@ -29,26 +28,28 @@
         "ci_email_notification": "Yes"
     },
     "home_and_utility_information": {
-        "haui_type_of_home": "Multi-unit (apartment, condo, duplex, etc.)",
+        "haui_type_of_home": "site_built_single_house",
         "haui_electricity_vendor": "electricity company",
         "haui_heating_vendor": "heating provider",
         "haui_own_home_or_rental": "Own",
         "haui_electricity_included_house_rent": "Yes",
         "haui_heat_included_house_rent": "Yes",
         "haui_primary_heating_source": [
-            "Furnace/Heat Pump",
-             "Furnace/Heat Pump"
+            "furnace_heat_pump",
+             "baseboard_wall"
         ],
         "haui_heating_system_functional": "Yes",
         "haui_heating_fuel": [
-            "Electric"
+            "electric",
+             "fuel_oil"
         ],
         "haui_secondary_heating_source": "Yes",
         "haui_secondary_heating_source_explanation": ""
     },
     "income_and_benefits": {
         "iab_sources_of_income_received_by_anyone": [
-            "Employment wages"
+            "employment_wages",
+             "self_employment"
         ]
     },
     "additional_assistance": {
@@ -59,7 +60,7 @@
             "permanent_supportive_housing",
             "vash"
         ],
-        "aa_paid_chil_support": "Yes",
+        "aa_paid_child_support": "Yes",
         "aa_not_working_nor_attending_school": "Yes"
     },
     "household_members_demographics": {
@@ -75,7 +76,7 @@
         "hmd_add_additional_hm": "No",
         "hmd_disable": "Yes",
         "hmd_associated_with_the_agency": "Yes",
-        "hmd_type_of_household": "Single person",
+        "hmd_type_of_household": "single_male_parent",
         "hmd_mi": "MI",
         "additional_member_details": [
             {
